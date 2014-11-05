@@ -15,7 +15,7 @@ import javax.persistence.Temporal;
  * @author Missaoui
  */
 @Entity
-@Table(name="Adherent")
+@Table(name="ADHERENT")
 public class Adherent extends User {
 
 
@@ -33,6 +33,19 @@ public class Adherent extends User {
     @Column(name = "NUMEROCARTE")
     private String numeroCarte ;
 
+    
+    @OneToMany(cascade=ALL, mappedBy="adherent")
+    private List<Emprunt> emprunts;
+
+    public List<Emprunt> getEmprunts() {
+	return emprunts;
+    }
+
+    public void setEmprunts(List<Emprunt> emprunts) {
+	this.emprunts = emprunts;
+    }
+    
+    
     
     public Date getDateAhesion() {
         return dateAhesion;

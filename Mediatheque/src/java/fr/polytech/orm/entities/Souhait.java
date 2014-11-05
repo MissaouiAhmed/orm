@@ -22,9 +22,35 @@ public class Souhait {
     @Column(name = "DESCRIPTION")
     private String description;
     
+    @Column(name = "ITEM_NAME")
+    private String itemName;
+    
+    @Column(name = "ITEM_TYPE")
+    private String itemType;
+
+    public String getItemName() {
+	return itemName;
+    }
+
+    public String getItemType() {
+	return itemType;
+    }
+
+    public void setItemName(String itemName) {
+	this.itemName = itemName;
+    }
+
+    public void setItemType(String itemType) {
+	this.itemType = itemType;
+    }
+    
+    
+    
+    
+    
     @ManyToOne
     private Adherent adherent;
-
+    
     public Adherent getAdherent() {
         return adherent;
     }

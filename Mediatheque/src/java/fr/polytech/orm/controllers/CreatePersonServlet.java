@@ -32,14 +32,14 @@ package fr.polytech.orm.controllers;
 
 import fr.polytech.orm.entities.Person;
 import java.io.*;
+import javax.annotation.Resource;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
-import javax.persistence.PersistenceUnit;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityManager;
-import javax.annotation.Resource;
 import javax.transaction.UserTransaction;
 
 

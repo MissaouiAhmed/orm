@@ -1,6 +1,5 @@
 package fr.polytech.orm.entities;
 
-import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,6 +28,24 @@ public abstract class User {
     @Column(name = "NOM")
     private String nom;
 
+    
+    @Column(name = "PASSWORD")
+    private String password;
+
+    
+    @Column(name = "LOGIN")
+    private String login;
+
+    public String getPassword() {
+	return password;
+    }
+
+    public void setPassword(String password) {
+	this.password = password;
+    }
+
+    
+    
     @Column(name = "DATE_NAISSANCE")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateNaissance;
