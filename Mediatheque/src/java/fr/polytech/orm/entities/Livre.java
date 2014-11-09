@@ -14,7 +14,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="Livre")
-public class Livre extends Type_Item{
+public class Livre extends TypeItem{
 
     public Livre() {
     }

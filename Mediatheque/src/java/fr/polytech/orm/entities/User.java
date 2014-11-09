@@ -1,5 +1,6 @@
 package fr.polytech.orm.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,8 +17,11 @@ import javax.persistence.Temporal;
 @Entity
 @Table(name = "USER")
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-public abstract class User {
+public abstract class User implements Serializable{
 
+    
+    private static final long serialVersionUID = 2L;
+    
     @Id
     @Column(name = "ID")
     private String id;
@@ -42,6 +46,12 @@ public abstract class User {
 
     public void setPassword(String password) {
 	this.password = password;
+
+    
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     

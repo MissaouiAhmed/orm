@@ -1,29 +1,33 @@
 package fr.polytech.orm.entities;
 
 import java.io.Serializable;
-import javax.persistence.AssociationOverride;
-import javax.persistence.AssociationOverrides;
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
 @Table(name = "LigneCommande")
-@AssociationOverrides({
-    @AssociationOverride(name = "pk.commandeitem", 
-            joinColumns = @JoinColumn(name = "reference")),
-    @AssociationOverride(name = "pk.Commandebondecommde",
-            joinColumns = @JoinColumn(name = "numero_commande"))
-})
+
+//@NamedQueries({
+//    @NamedQuery(
+//    
+//    name = "getLigneCommandeOfCommande",
+//    query = "SELECT l FROM LigneCommande l" + "WHERE l.pk.BonDeCommande.numeroCommande = :numeroCommande "
+//       
+//    )
+//})
 public class LigneCommande implements Serializable {
 
     private LigneCommandeId pk = new LigneCommandeId();
     private int quantité;
 
-    @EmbeddedId
+    public LigneCommande() {
+    }
+
+    @Id
     public LigneCommandeId getPk() {
         return pk;
     }
@@ -33,24 +37,23 @@ public class LigneCommande implements Serializable {
     }
 
     @Transient
-    public Item getCommandeitem() {
-        return getPk().getCommandeitem();
+    public Item getItem() {
+        return getPk().getItem();
     }
 
-    public void setCommandeitem(Item commandeitem) {
-        getPk().setCommandeitem(commandeitem);
+    public void setItem(Item item) {
+        getPk().setItem(item);
+    }
+
+    public void setCommande(BonDeCommande commande) {
+        getPk().setCommande(commande);
     }
 
     @Transient
-    public BonDeCommande getCommandebondecommde() {
-        return getPk().getCommandebondecommde();
+    public BonDeCommande getCommande() {
+        return getPk().getCommande();
     }
 
-    public void setCommandebondecommde(BonDeCommande Commandebondecommde) {
-        getPk().setCommandebondecommde(Commandebondecommde);
-    }
-
-    @Column(name = "QUANTITE")
     public int getQuantité() {
         return quantité;
     }

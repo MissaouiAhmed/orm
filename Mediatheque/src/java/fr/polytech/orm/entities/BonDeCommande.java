@@ -1,18 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package fr.polytech.orm.entities;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
-import static javax.persistence.CascadeType.ALL;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -23,19 +22,35 @@ import javax.persistence.Temporal;
  */
 @Entity
 @Table(name="BonDeCommande")
-public class BonDeCommande {
+
+@NamedQueries({
+    @NamedQuery(
+    name="getAllBonDeCommandes",
+    query="SELECT l FROM BonDeCommande l" )
+})
+public class BonDeCommande implements Serializable {
     @Id
-    @Column(name="ID",nullable=false)
-    private String numero_commande;
-    @Column(name = "nom_fournisseur")
+    private String numeroCommande;
+    @Column(name = "DATE_COMMANDE")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date date_commande;
     
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Fournisseur fournisseur;
 
+    public BonDeCommande(String numeroCommande, Date date_commande, Fournisseur fournisseur, List<LigneCommande> lignesCommandes) {
+	this.numeroCommande = numeroCommande;
+	this.date_commande = date_commande;
+	this.fournisseur = fournisseur;
+	this.lignesCommandes = lignesCommandes;
+    }
+
     
-    @OneToMany(mappedBy = "pk.Commandebondecommde")
+
+    
+    
+    
+    @OneToMany(mappedBy = "pk.commande",cascade = CascadeType.ALL)
     private List<LigneCommande> lignesCommandes;
 
     public List<LigneCommande> getLignesCommandes() {
@@ -44,6 +59,10 @@ public class BonDeCommande {
 
     public void setLignesCommandes(List<LigneCommande> lignesCommandes) {
         this.lignesCommandes = lignesCommandes;
+    }
+
+    public BonDeCommande() {
+        lignesCommandes=new ArrayList<LigneCommande>();
     }
     
     
@@ -59,19 +78,17 @@ public class BonDeCommande {
     
     
   
-    public BonDeCommande(String numero_commande, Date date_commande) {
-        this.numero_commande = numero_commande;
-        this.date_commande = date_commande;
+
+    public String getNumeroCommande() {
+	return numeroCommande;
+    }
+
+    public void setNumeroCommande(String numeroCommande) {
+	this.numeroCommande = numeroCommande;
     }
 
     
-    public String getNumero_commande() {
-        return numero_commande;
-    }
-
-    public void setNumero_commande(String numero_commande) {
-        this.numero_commande = numero_commande;
-    }
+    
 
     public Date getDate_commande() {
         return date_commande;

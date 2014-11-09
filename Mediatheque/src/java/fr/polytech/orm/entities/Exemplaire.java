@@ -1,10 +1,15 @@
 package fr.polytech.orm.entities;
 
+import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import static javax.persistence.CascadeType.ALL;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -14,7 +19,13 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "Exemplaire")
-public class Exemplaire {
+//@NamedQueries({
+//    @NamedQuery(
+//    name="getAllExemplairesOfItem",
+//    query="SELECT l FROM Exemplaire l"+
+//          "WHERE l.item.reference = :reference " )
+//})
+public class Exemplaire implements Serializable {
 
     @Id
     @Column(name = "REFERENCE_EXEMPLAIRE", nullable = false)
@@ -26,6 +37,17 @@ public class Exemplaire {
     @Column(name = "ETAT_EXEMPLAIRE")
     private String etat;
 
+    @ManyToOne
+    private Item item;
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+    
     
     @OneToMany(cascade=ALL, mappedBy="exemplaire")
     private List<Emprunt> emprunts;

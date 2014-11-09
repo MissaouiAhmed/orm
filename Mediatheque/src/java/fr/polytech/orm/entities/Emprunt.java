@@ -15,15 +15,21 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "Emprunt")
+
+@NamedQueries({
+    @NamedQuery(
+    name="getAllEmprunts",
+    query="SELECT l FROM Emprunt l" )
+})
 public class Emprunt implements Serializable {
 
     @Id
     @Column(name = "NUMERO", nullable = false)
     private String numero;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ADHERENT", nullable = false)
     private Adherent adherent;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "EXEMPLAIRE", nullable = false)
     private Exemplaire exemplaire;
     @Column(name = "DATE_EMPRUNT", nullable = false)
@@ -65,8 +71,40 @@ public class Emprunt implements Serializable {
     public EmpruntStatus getStatus() {
 	return status;
     }
+
+    public void setAdherent(Adherent adherent) {
+        this.adherent = adherent;
+    }
+
+    public void setDateEprunt(Date dateEprunt) {
+        this.dateEprunt = dateEprunt;
+    }
+
+    public void setDateRetour(Date dateRetour) {
+        this.dateRetour = dateRetour;
+    }
+
+    public void setDuree(int duree) {
+        this.duree = duree;
+    }
+
+    public void setExemplaire(Exemplaire exemplaire) {
+        this.exemplaire = exemplaire;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public void setStatus(EmpruntStatus status) {
+        this.status = status;
+    }
     
     
     
 
+    
+    
+    
+    
 }

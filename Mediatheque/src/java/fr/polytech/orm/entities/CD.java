@@ -14,7 +14,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="CD")
-public class CD extends Type_Item{
+public class CD extends TypeItem{
 
     public CD() {
     }

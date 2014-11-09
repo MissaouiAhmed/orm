@@ -1,12 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package fr.polytech.orm.entities;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 /**
@@ -16,26 +14,39 @@ import javax.persistence.ManyToOne;
 
 @Embeddable
 public class LigneCommandeId implements Serializable{
-    private Item commandeitem;
-    private BonDeCommande Commandebondecommde;
+    private static final long serialVersionUID = 1L;
+    private Item item;
+    private BonDeCommande commande;
 
-    @ManyToOne
-    public Item getCommandeitem() {
-        return commandeitem;
+    public LigneCommandeId() {
     }
 
-    public void setCommandeitem(Item commandeitem) {
-        this.commandeitem = commandeitem;
+    
+    
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "numeroCommande")
+    public BonDeCommande getCommande() {
+	return commande;
+    }
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "reference")
+    public Item getItem() {
+	return item;
     }
 
-    @ManyToOne
-    public BonDeCommande getCommandebondecommde() {
-        return Commandebondecommde;
+    public void setCommande(BonDeCommande commande) {
+	this.commande = commande;
     }
 
-    public void setCommandebondecommde(BonDeCommande Commandebondecommde) {
-        this.Commandebondecommde = Commandebondecommde;
+    public void setItem(Item item) {
+	this.item = item;
     }
+
+   
+    
+    
+    
+    
     
     
 }

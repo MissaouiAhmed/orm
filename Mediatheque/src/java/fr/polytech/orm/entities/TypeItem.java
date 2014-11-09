@@ -20,63 +20,72 @@ import javax.persistence.Table;
  * @author Molka
  */
 @Entity
-@Table(name="Type_Item")
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-public class Type_Item {
-     @Id
+@Table(name = "Type_Item")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public class TypeItem {
+
+    @Id
     @Column(name = "ID")
     private String id;
     @Column(name = "penalite_par_jour")
-     private int penalite_par_jour;
+    private int penalite_par_jour;
     @Column(name = "duree_maximale")
-     private int duree_maximale;
+    private int duree_maximale;
     @Column(name = "nb_max_emprunt")
-     private int nb_max_emprunt;
+    private int nb_max_emprunt;
     @Column(name = "est_renouvelable")
-     private boolean est_renouvelable;
-    @OneToMany(cascade=ALL, mappedBy="type")
+    private boolean est_renouvelable;
+    @OneToMany(cascade = ALL, mappedBy = "type")
     private List<Item> items;
 
-    public Type_Item() {
+    public TypeItem(String id, int penalite_par_jour, int duree_maximale, int nb_max_emprunt, boolean est_renouvelable, List<Item> items) {
+	this.id = id;
+	this.penalite_par_jour = penalite_par_jour;
+	this.duree_maximale = duree_maximale;
+	this.nb_max_emprunt = nb_max_emprunt;
+	this.est_renouvelable = est_renouvelable;
+	this.items = items;
+    }
+
+    
+    
+    public TypeItem() {
     }
 
     public String getId() {
-        return id;
+	return id;
     }
 
     public int getNb_max_emprunt() {
-        return nb_max_emprunt;
+	return nb_max_emprunt;
     }
 
-    
     public int getPenalite_par_jour() {
-        return penalite_par_jour;
+	return penalite_par_jour;
     }
 
     public void setPenalite_par_jour(int penalite_par_jour) {
-        this.penalite_par_jour = penalite_par_jour;
+	this.penalite_par_jour = penalite_par_jour;
     }
 
     public int getDuree_maximale() {
-        return duree_maximale;
+	return duree_maximale;
     }
 
     public void setDuree_maximale(int duree_maximale) {
-        this.duree_maximale = duree_maximale;
+	this.duree_maximale = duree_maximale;
     }
 
     public boolean isEst_renouvelable() {
-        return est_renouvelable;
+	return est_renouvelable;
     }
 
     public void setEst_renouvelable(boolean est_renouvelable) {
-        this.est_renouvelable = est_renouvelable;
+	this.est_renouvelable = est_renouvelable;
     }
 
     public List<Item> getItems() {
-        return items;
+	return items;
     }
-    
-    
-     
+
 }
