@@ -28,7 +28,7 @@ public class ProductManagementImpl implements ProductManagement {
 
     public List<Item> getAllItems() {
         return em.createQuery("select a from Item a").getResultList();
-
+    
     }
 
     public List<Exemplaire> getAllExemplaires() {

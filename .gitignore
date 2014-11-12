@@ -1,4 +1,5 @@
 /Mediatheque/build/
 
 *.class
-Mediatheque/nbproject/
+Mediatheque/nbproject
+/Mediatheque/dist/
