@@ -1,5 +1,10 @@
 /Mediatheque/build/
 
 *.class
+<<<<<<< HEAD
 Mediatheque/nbproject
 /Mediatheque/dist/
+=======
+Mediatheque/nbproject/
+/Mediatheque/dist/
+>>>>>>> 087bb82c4ec1297b1337fc0cdba19c1bad4f48a1

@@ -3,9 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/D:/Master_2_KIS/Cours/Méthodes%20et%20techniques%20dans%20les%20applications%20relationnelles/Projet/Mediatheque/orm/Mediatheque/web/adherent/aDashboard.jsp</file>
             <file>file:/D:/Master_2_KIS/Cours/Méthodes%20et%20techniques%20dans%20les%20applications%20relationnelles/Projet/Mediatheque/orm/Mediatheque/src/java/fr/polytech/orm/controllers/SignInServlet.java</file>
             <file>file:/D:/Master_2_KIS/Cours/Méthodes%20et%20techniques%20dans%20les%20applications%20relationnelles/Projet/Mediatheque/orm/Mediatheque/web/adherent/indexAdherent.html</file>
+=======
+            <file>file:/C:/Users/Anas/Desktop/Master2/Relationnel/orm/Mediatheque/src/java/fr/polytech/orm/buisness/ProductManagement.java</file>
+            <file>file:/C:/Users/Anas/Desktop/Master2/Relationnel/orm/Mediatheque/src/java/fr/polytech/orm/controllers/AddExemplaireServlet.java</file>
+            <file>file:/C:/Users/Anas/Desktop/Master2/Relationnel/orm/Mediatheque/src/java/fr/polytech/orm/buisness/ProductManagementImpl.java</file>
+            <file>file:/C:/Users/Anas/Desktop/Master2/Relationnel/orm/Mediatheque/src/java/fr/polytech/orm/controllers/AddReservationServlet.java</file>
+            <file>file:/C:/Users/Anas/Desktop/Master2/Relationnel/orm/Mediatheque/src/java/fr/polytech/orm/controllers/DashboardServlet.java</file>
+            <file>file:/C:/Users/Anas/Desktop/Master2/Relationnel/orm/Mediatheque/web/employee/Dashboard.jsp</file>
+>>>>>>> 087bb82c4ec1297b1337fc0cdba19c1bad4f48a1
         </group>
     </open-files>
 </project-private>

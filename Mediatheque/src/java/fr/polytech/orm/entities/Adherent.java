@@ -24,6 +24,11 @@ import javax.persistence.Temporal;
     @NamedQuery(
     name="getAllAdherents",
     query="SELECT l FROM Adherent l " ),
+     @NamedQuery(
+    name="getAdherentbyId",
+    query="SELECT l FROM Adherent l " +
+          "WHERE l.id = :id " +
+          ""),
 //    @NamedQuery(
 //    name="getAllCompteByIDAdherent",
 //    query="SELECT compte FROM Adherent l where l.reference = :reference " )

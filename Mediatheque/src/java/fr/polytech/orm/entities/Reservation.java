@@ -15,6 +15,14 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "Reservation")
+@NamedQueries({
+    @NamedQuery(
+    name="getReservationbyId",
+    query="SELECT l FROM Reservation l " +
+          "WHERE l.numero = :reference " +
+          ""),
+})
+
 public class Reservation implements Serializable {
 
     @Id
@@ -22,12 +30,12 @@ public class Reservation implements Serializable {
     private String numero;
     
     
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "ADHERENT", nullable = false)
     private Adherent adherent;
     
     
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "ITEM", nullable = false)
     private Item item;
     

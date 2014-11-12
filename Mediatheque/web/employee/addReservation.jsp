@@ -1,5 +1,6 @@
-<%@page import="java.util.List"%>
+<%@page import="fr.polytech.orm.entities.Adherent"%>
 <%@page import="fr.polytech.orm.entities.Item"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,8 +16,8 @@
     </head>
 
     <body>
-
         <%@include file="../navigation/TopBar.html" %>
+
 
         <div class="container-fluid">
             <div class="row">
@@ -27,19 +28,11 @@
                     <h1 class="page-header">Dashboard Mediatheque </h1>
 
 
-                    <h2 class="sub-header">Ajout Exemplaire</h2>
+                    <h2 class="sub-header">Reservation</h2>
 
-                    
-
-                    
-                     <form role="form" action="../AddExemplaire" method="post">
+                    <form action="../AddReservation" method="post">
                         <div class="form-group">
-                            <label for="reference">reference</label>
-                            <input type="text" class="form-control" id="reference" placeholder="reference" 
-                                   name="reference">
-                        </div>
-                        <div class="form-group">
-                             <label for="item">item</label>
+                             <label for="item">Item</label>
                              <select id="selecteditem" name="selecteditem" >
                                <option value="" selected=""/>
                              
@@ -55,11 +48,26 @@
                                 
                             </select>
                          </div>
-
-                       
-                        
-                        <button type="submit" class="btn btn-default">add Exemplaire</button>
+                                
+                                 <div class="form-group">
+                             <label for="item">Adherent</label>
+                             <select id="selecteditem" name="selectedadehrent" >
+                               <option value="" selected=""/>
+                             
+                                <%
+                                    List<Adherent> adherents = (List) request.getSession().getAttribute("adherents");
+                                    for (Adherent adherent : adherents) {
+                                        out.print("<option value="+adherent.getId()+">" + adherent.getId() +
+                                                "</option>");
+                            
+                                    }
+                                %>     
+                                
+                            </select>
+                         </div>
+                        <input type="submit" value="CreateRecord" />
                     </form>
+
                    
                     </div>
                 </div>

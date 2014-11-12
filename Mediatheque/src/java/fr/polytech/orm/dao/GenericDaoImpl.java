@@ -1,4 +1,4 @@
-package fr.polytech.orm.dao;
+    package fr.polytech.orm.dao;
 
 import java.io.Serializable;
 import javax.persistence.EntityManager;

@@ -25,9 +25,9 @@
                     <h1 class="page-header">Dashboard Mediatheque </h1>
 
 
-                    <h2 class="sub-header">Ajout Fournisseur</h2>
+                    <h2 class="sub-header">Ajout Commande</h2>
 
-                    <form action="../AddFournisseur" method="post">
+                    <form action="../AddCommande" method="post">
                         <table>
                             <tr><td>ID:</td><td><input type="text" id = "id" name="id" /></td></tr>
                             <tr><td>FirstName</td><td><input type="text" id = "firstName" name="firstName" /></td></tr>

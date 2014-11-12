@@ -25,18 +25,27 @@
                     <h1 class="page-header">Dashboard Mediatheque </h1>
 
 
-                    <h2 class="sub-header">Ajout Fournisseur</h2>
+                    <h2 class="sub-header">Delete Item</h2>
 
-                    <form action="../AddFournisseur" method="post">
-                        <table>
-                            <tr><td>ID:</td><td><input type="text" id = "id" name="id" /></td></tr>
-                            <tr><td>FirstName</td><td><input type="text" id = "firstName" name="firstName" /></td></tr>
-                            <tr><td>LastName</td><td><input type="text" id = "lastName" name="lastName" /></td></tr>
-                        </table>
-                        <input type="submit" value="CreateRecord" />
+                    <form role="form" action="../DeleteItem" method="post">
+                        <div class="form-group">
+                            <label for="reference">reference</label>
+                            <input type="text" class="form-control" id="reference" placeholder="reference"
+                                   name="reference">
+                        </div>
+                        <div class="form-group">
+                            <label for="titre">titre</label>
+                            <input type="text" class="form-control" id="titre" placeholder="titre" name="titre">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="auteur">auteur</label>
+                            <input type="text" class="form-control" id="auteur" placeholder="auteur" name="auteur">
+                        </div>
+                        
+                        
+                        <button type="submit" class="btn btn-default">delete Item</button>
                     </form>
-
-                   
                     </div>
                 </div>
             </div>

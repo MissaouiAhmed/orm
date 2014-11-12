@@ -18,5 +18,13 @@ public interface ProductManagement {
 
     public void addExemplaire(Exemplaire exemplaire);
 
+    public Exemplaire getExemplaire(String reference);
+    
     public List<Exemplaire> getAllExemplaires();
+    
+    public void deleteItem(Item item);
+    
+     public Exemplaire getDispExemplaire(List<Exemplaire> Exemplaires);
+      public void deleteExemplaire(Exemplaire exemplaire);
+     
 }

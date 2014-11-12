@@ -7,6 +7,7 @@ import java.util.List;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 /**
  *
@@ -35,11 +36,33 @@ public class ProductManagementImpl implements ProductManagement {
         return em.createQuery("select a from Exemplaire a").getResultList();
 
     }
+    
+    public Exemplaire getDispExemplaire(List<Exemplaire> pExemplaires){
+        for(Exemplaire ex : pExemplaires){
+            if(ex.getEtat() != null && ex.getEtat().equals("Disponible")){
+                return ex;
+            }
+        }
+        return null;
+    }
 
     public Item getItem(String reference) {
 
         return (Item) em.createNamedQuery("getItembyId").setParameter("reference", reference).
                 getSingleResult();
+    }
+
+    public Exemplaire getExemplaire(String reference) {
+
+        return (Exemplaire) em.createNamedQuery("getExemplairebyId").setParameter("reference", reference).
+              getSingleResult();
+    }
+    public void deleteItem(Item item) {
+     DaoFactory.itemDAO.delete(item, em);
+    }
+    
+     public void deleteExemplaire(Exemplaire exemplaire) {
+     DaoFactory.exemplaireDAO.delete(exemplaire, em);
     }
 
 }
