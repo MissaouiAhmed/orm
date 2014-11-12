@@ -1,3 +1,4 @@
+<%@page import="fr.polytech.orm.entities.Souhait"%>
 <%@page import="fr.polytech.orm.entities.BonDeCommande"%>
 <%@page import="fr.polytech.orm.entities.Fournisseur"%>
 <%@page import="fr.polytech.orm.entities.Reservation"%>
@@ -25,7 +26,7 @@
 
         <div class="container-fluid">
             <div class="row">
-                <%@include file="../navigation/LeftBar.html" %>
+                <%@include file="../employee/LeftBar.html" %>
                 <!-- --------------------------------------------------------------- -->          
 
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -85,6 +86,7 @@
                                     <th>Reference</th>
                                     <th>Titre</th>
                                     <th>Auteur</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -99,14 +101,19 @@
                                         out.print("<td>" + item.getReference() + "</td>");
                                         out.print("<td>" + item.getTitre()+ "</td>");
                                         out.print("<td>" + item.getAuteur()+ "</td>");
-                                        
+                                        out.print ("<td>"+"molka"+"</td>");
+                                        out.print ("<td><a href='../DeleteItem?reference="+item.getReference()+"'>REMOVE</td>");
+                                     
+                                      
                                         out.print("</tr>");
 
                                     }
                                 %>     
+                           
 
                             </tbody>
                         </table>
+                               
                     </div>
 
                     <!-- ************************************************************************************** -->                                    
@@ -139,7 +146,8 @@
                                         out.print("<td>" + exemplaire.getEtat()+ "</td>");
                                         out.print("<td>" + exemplaire.getNb_emprunt()+ "</td>");
                                         out.print("<td>" + exemplaire.getItem().getReference() + "</td>");
-
+                                        out.print ("<td><a href='../AddExemplaire?type=Annulation&reference="+exemplaire.getReference()+"'>REMOVE</td>");
+                                     
                                         out.print("</tr>");
 
                                     }
@@ -163,9 +171,12 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>ID</th>
-                                    <th>firstName</th>
-                                    <th>LastName</th>                                    
+                                    <th>NumeroEmprunt</th>
+                                    <th>IdAdherent</th>
+                                    <th>IdExemplaire</th>   
+                                    <th>DateEmprunt</th> 
+                                     <th> </th>
+                                      <th> </th>
                                 </tr>
                             </thead>
                             <tbody>                               
@@ -173,12 +184,14 @@
                                 <%
                                     List<Emprunt> emprunts = (List) request.getSession().getAttribute("emprunts");
                                     for (Emprunt emprunt : emprunts) {
-                                        out.print("<tr class='danger'>");
+                                            out.print("<td></td>");
                                         out.print("<td>" + emprunt.getNumero() + "</td>");
                                         out.print("<td>" + emprunt.getAdherent().getId() + "</td>");
                                         out.print("<td>" + emprunt.getExemplaire().getReference() + "</td>");
                                         out.print("<td>" + emprunt.getDateEprunt() + "</td>");
-
+                             out.print ("<td><a href='../AddEmprunt?type=Validation&numero="+emprunt.getNumero()+"'>VALIDATE</td>");
+                             out.print ("<td><a href='../AddEmprunt?type=Annulation&numero="+emprunt.getNumero()+"'>REMOVE</td>");
+                            
                                         out.print("</tr>");
 
                                     }
@@ -195,9 +208,12 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>ID</th>
-                                    <th>firstName</th>
-                                    <th>LastName</th>                                    
+                                    <th>Numero</th>
+                                    <th>IdAdherent</th>
+                                    <th>ReferenceItem</th>   
+                                    <th>Quantite</th> 
+                                    <th>Status</th>  
+                                    
                                 </tr>
                             </thead>
                             <tbody>                               
@@ -206,12 +222,15 @@
                                     List<Reservation> reservations = (List) request.getSession().
                                             getAttribute("reservations");
                                     for (Reservation reservation : reservations) {
-                                        out.print("<tr class='info'>");
+                                         out.print("<td></td>");
                                         out.print("<td>" + reservation.getNumero() + "</td>");
                                         out.print("<td>" + reservation.getAdherent().getId() + "</td>");
                                         out.print("<td>" + reservation.getItem().getReference() + "</td>");
                                         out.print("<td>" + reservation.getQuantité() + "</td>");
-
+                                         out.print("<td>" + reservation.getStatus() + "</td>");
+                            out.print ("<td><a href='../AddReservation?type=Validation&numero="+reservation.getNumero()+"'>VALIDATE</td>");
+                             out.print ("<td><a href='../AddReservation?type=Annulation&numero="+reservation.getNumero()+"'>REMOVE</td>");
+                                    
                                         out.print("</tr>");
 
                                     }
@@ -224,7 +243,7 @@
 
 
                     <!-- ************************************************************************************** -->                                    
-                    <h2 class="sub-header">Liste des Fournisseur </h2>
+                    <h2 class="sub-header">Liste des Fournisseurs </h2>
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead>
@@ -289,6 +308,38 @@
                     </div>
                     <!-- ************************************************************************************** -->                                    
 
+                    <h2 class="sub-header">Liste des souhaits </h2>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>ID</th>
+                                    <th>DESCRIPTION</th>
+                                    <th>ITEM_NAME</th>      
+                                    <th>ITEM_TYPE</th>  
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>                               
+
+                              <%
+                                    List<Souhait> souhaits = (List) request.getSession().
+                                            getAttribute("souhaits");
+                                    for (Souhait souhait : souhaits) {
+                                        out.print("<tr class='info'>");
+                                        out.print("<td>" + souhait.getNumero() + "</td>");
+                                        out.print("<td>" + souhait.getDescription()+ "</td>");
+                                        out.print("<td>" + souhait.getItemName()+ "</td>");
+                                        out.print("<td>" + souhait.getItemType()+ "</td>");
+                                        out.print("</tr>");
+
+                                    }
+                                %>     
+
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -297,4 +348,5 @@
     </body>
 </html>
 
-  
+
+

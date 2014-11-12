@@ -13,10 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Missaoui
+ * @author Tounsi
  */
-@WebServlet(name = "AddItemServlet", urlPatterns = {"/AddItem"})
-public class AddItemServlet extends HttpServlet {
+@WebServlet(name = "DeleteItemServlet", urlPatterns = {"/DeleteItem"})
+public class DeleteItemServlet extends HttpServlet {
 
     @EJB
     ProductManagement gestionnaireProdcuts;
@@ -27,15 +27,10 @@ public class AddItemServlet extends HttpServlet {
         String reference = request.getParameter("reference");
 
         
-        String titre = request.getParameter("titre");
-        String auteur = request.getParameter("auteur");
-
         Item ad = new Item();
         ad.setReference(reference);
-        ad.setAuteur(auteur);
-        ad.setTitre(titre);
-        ad.setDateDispostion(new Date());
-        gestionnaireProdcuts.addItem(ad);
+        
+        gestionnaireProdcuts.deleteItem(ad);
 
         response.sendRedirect("Dashboard");
     }

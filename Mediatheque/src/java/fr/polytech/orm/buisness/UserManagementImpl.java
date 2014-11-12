@@ -33,8 +33,8 @@ public class UserManagementImpl implements UserManagement {
     }
 
     public Adherent getAdherent(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        return (Adherent) em.createNamedQuery("getAdherentbyId").setParameter("id", id).
+              getSingleResult();    }
 
     public String CheckType(User user) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

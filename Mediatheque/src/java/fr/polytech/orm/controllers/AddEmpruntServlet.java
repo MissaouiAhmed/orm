@@ -1,10 +1,12 @@
 package fr.polytech.orm.controllers;
 
 import fr.polytech.orm.buisness.EmpruntManagement;
+import fr.polytech.orm.buisness.ProductManagement;
+import fr.polytech.orm.buisness.UserManagement;
 import fr.polytech.orm.entities.Adherent;
 import fr.polytech.orm.entities.Emprunt;
+import fr.polytech.orm.entities.EmpruntStatus;
 import fr.polytech.orm.entities.Exemplaire;
-import fr.polytech.orm.entities.Item;
 import java.io.IOException;
 import java.util.Date;
 import java.util.UUID;
@@ -24,11 +26,37 @@ public class AddEmpruntServlet extends HttpServlet {
 
     @EJB
     EmpruntManagement gestionnaireEmprunt;
+    @EJB
+    ProductManagement gestionnaireProducts;
+    @EJB
+    UserManagement gestionnaireAdherent;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String selectedExemplaire = request.getParameter("selectedexemplaire");
+         String selectedAdherent = request.getParameter("selectedadehrent");
+         
+ String numero = request.getParameter("numero");
+        String type = request.getParameter("type");
+     if(type!=null && type.equals("Validation")){
 
-        Exemplaire e = new Exemplaire();
+        Emprunt res = new Emprunt();
+        res.setNumero(numero);
+        res=gestionnaireEmprunt.getEmprunt(numero);
+        res.setStatus(EmpruntStatus.EN_COURS);
+        gestionnaireEmprunt.updateEmprunt(res);
+          response.sendRedirect("Dashboard");
+     }
+     else if (type!=null && type.equals("Annulation")){
+        Emprunt res = new Emprunt();
+        res.setNumero(numero);
+        res=gestionnaireEmprunt.getEmprunt(numero);
+        res.setStatus(EmpruntStatus.TERMINE);
+        gestionnaireEmprunt.deleteEmprunt(res);
+          response.sendRedirect("Dashboard"); 
+     }
+     else {
+        /*Exemplaire e = new Exemplaire();
         e.setReference(UUID.randomUUID().toString());
         Item ad = new Item();
         ad.setReference(UUID.randomUUID().toString());
@@ -36,20 +64,24 @@ public class AddEmpruntServlet extends HttpServlet {
 
         Adherent add = new Adherent();
         add.setId(UUID.randomUUID().toString());
-        add.setPrenom(UUID.randomUUID().toString());
-
-        Emprunt em = new Emprunt();
+        add.setPrenom(UUID.randomUUID().toString());*/
+       Emprunt em = new Emprunt();
+        Exemplaire exemplaire = gestionnaireProducts.getExemplaire(selectedExemplaire);
+        em.setExemplaire(exemplaire);
+ 
+         Adherent adherent = gestionnaireAdherent.getAdherent(selectedAdherent);
+        em.setAdherent(adherent);
+        
         em.setDateEprunt(new Date());
         em.setDuree(6);
         em.setNumero(UUID.randomUUID().toString());
-        em.setExemplaire(e);
-        em.setAdherent(add);
+        
         gestionnaireEmprunt.addEmprunt(em);
 
         response.sendRedirect("Dashboard");
 
     }
-
+    }
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);

@@ -19,6 +19,15 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "Exemplaire")
+@NamedQueries({
+    @NamedQuery(
+    name="getExemplairebyId",
+    query="SELECT l FROM Exemplaire l WHERE l.reference LIKE :reference " 
+          )
+    
+   
+     
+})
 //@NamedQueries({
 //    @NamedQuery(
 //    name="getAllExemplairesOfItem",
@@ -91,5 +100,14 @@ public class Exemplaire implements Serializable {
     public void setReference(String reference) {
 	this.reference = reference;
     }
+
+    public Exemplaire(String reference, int nb_emprunt, String etat, Item item, List<Emprunt> emprunts) {
+        this.reference = reference;
+        this.nb_emprunt = nb_emprunt;
+        this.etat = etat;
+        this.item = item;
+        this.emprunts = emprunts;
+    }
+    
 
 }

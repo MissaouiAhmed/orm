@@ -25,5 +25,19 @@ public class EmpruntManagementImpl implements EmpruntManagement {
         return em.createQuery("select a from Emprunt a").getResultList();
 
     }
+    
+     public Emprunt getEmprunt(String reference) {
+
+        return (Emprunt) em.createNamedQuery("getEmpruntbyId").setParameter("reference", reference).
+                getSingleResult();
+    }
+
+    public void updateEmprunt(Emprunt emprunt) {
+         DaoFactory.empruntDAO.update(emprunt, em);
+           }
+
+      public void deleteEmprunt(Emprunt emprunt) {
+         DaoFactory.empruntDAO.delete(emprunt, em);
+           }
 
 }

@@ -18,6 +18,11 @@ import javax.persistence.Table;
 
 @NamedQueries({
     @NamedQuery(
+    name="getEmpruntbyId",
+    query="SELECT l FROM Emprunt l " +
+          "WHERE l.numero = :reference " +
+          ""),
+    @NamedQuery(
     name="getAllEmprunts",
     query="SELECT l FROM Emprunt l" )
 })
@@ -26,10 +31,10 @@ public class Emprunt implements Serializable {
     @Id
     @Column(name = "NUMERO", nullable = false)
     private String numero;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "ADHERENT", nullable = false)
     private Adherent adherent;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "EXEMPLAIRE", nullable = false)
     private Exemplaire exemplaire;
     @Column(name = "DATE_EMPRUNT", nullable = false)

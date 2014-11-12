@@ -4,6 +4,7 @@ import fr.polytech.orm.buisness.EmpruntManagement;
 import fr.polytech.orm.buisness.ProductManagement;
 import fr.polytech.orm.buisness.ReStockManagement;
 import fr.polytech.orm.buisness.ReservationManagement;
+import fr.polytech.orm.buisness.SouhaitManagement;
 import fr.polytech.orm.buisness.UserManagement;
 import fr.polytech.orm.entities.Adherent;
 import fr.polytech.orm.entities.BonDeCommande;
@@ -12,6 +13,7 @@ import fr.polytech.orm.entities.Exemplaire;
 import fr.polytech.orm.entities.Fournisseur;
 import fr.polytech.orm.entities.Item;
 import fr.polytech.orm.entities.Reservation;
+import fr.polytech.orm.entities.Souhait;
 import java.io.IOException;
 import java.util.List;
 import javax.ejb.EJB;
@@ -43,6 +45,9 @@ public class DashboardServlet extends HttpServlet {
     @EJB
     ReStockManagement gestionnaireReaprovisionnement;
 
+    @EJB
+    SouhaitManagement gestionnaireSouhaits;
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -67,7 +72,10 @@ public class DashboardServlet extends HttpServlet {
         List<BonDeCommande> commandes = gestionnaireReaprovisionnement.getAllCommandes();
         request.getSession().setAttribute("commandes", commandes);
 
-        response.sendRedirect("admin/Dashboard.jsp");
+         List<Souhait> souhaits = gestionnaireSouhaits.getAllSouhaits();
+        request.getSession().setAttribute("souhaits", souhaits);
+        
+        response.sendRedirect("employee/Dashboard.jsp");
     }
 
     @Override
