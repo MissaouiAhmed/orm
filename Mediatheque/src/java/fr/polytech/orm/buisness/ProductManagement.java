@@ -4,10 +4,6 @@ import fr.polytech.orm.entities.Exemplaire;
 import fr.polytech.orm.entities.Item;
 import java.util.List;
 
-/**
- *
- * @author Missaoui
- */
 public interface ProductManagement {
 
     public void addItem(Item item);
@@ -19,12 +15,13 @@ public interface ProductManagement {
     public void addExemplaire(Exemplaire exemplaire);
 
     public Exemplaire getExemplaire(String reference);
-    
+
     public List<Exemplaire> getAllExemplaires();
-    
+
     public void deleteItem(Item item);
-    
-     public Exemplaire getDispExemplaire(List<Exemplaire> Exemplaires);
-      public void deleteExemplaire(Exemplaire exemplaire);
-     
+
+    public Exemplaire getDispExemplaire(List<Exemplaire> Exemplaires);
+
+    public void deleteExemplaire(Exemplaire exemplaire);
+
 }

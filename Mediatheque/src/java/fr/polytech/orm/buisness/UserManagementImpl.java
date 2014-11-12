@@ -5,15 +5,11 @@ import fr.polytech.orm.entities.Adherent;
 import fr.polytech.orm.entities.Employee;
 import fr.polytech.orm.entities.User;
 import java.util.List;
-import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-/**
- *
- * @author Missaoui
- */
-@Stateful
+@Stateless
 public class UserManagementImpl implements UserManagement {
 
     @PersistenceContext
@@ -34,7 +30,8 @@ public class UserManagementImpl implements UserManagement {
 
     public Adherent getAdherent(String id) {
         return (Adherent) em.createNamedQuery("getAdherentbyId").setParameter("id", id).
-              getSingleResult();    }
+                getSingleResult();
+    }
 
     public String CheckType(User user) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

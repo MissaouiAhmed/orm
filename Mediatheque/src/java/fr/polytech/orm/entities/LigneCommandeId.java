@@ -1,19 +1,14 @@
-
 package fr.polytech.orm.entities;
 
 import java.io.Serializable;
-import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-/**
- *
- * @author Molka
- */
-
 @Embeddable
-public class LigneCommandeId implements Serializable{
+public class LigneCommandeId implements Serializable {
+
     private static final long serialVersionUID = 1L;
     private Item item;
     private BonDeCommande commande;
@@ -21,32 +16,30 @@ public class LigneCommandeId implements Serializable{
     public LigneCommandeId() {
     }
 
+    public LigneCommandeId(Item item, BonDeCommande commande) {
+        this.item = item;
+        this.commande = commande;
+    }
     
-    
-    @ManyToOne(cascade = CascadeType.ALL)
+
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "numeroCommande")
     public BonDeCommande getCommande() {
-	return commande;
+        return commande;
     }
-    @ManyToOne(cascade = CascadeType.ALL)
+
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "reference")
     public Item getItem() {
-	return item;
+        return item;
     }
 
     public void setCommande(BonDeCommande commande) {
-	this.commande = commande;
+        this.commande = commande;
     }
 
     public void setItem(Item item) {
-	this.item = item;
+        this.item = item;
     }
 
-   
-    
-    
-    
-    
-    
-    
 }

@@ -1,36 +1,40 @@
 package fr.polytech.orm.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
-/**
- *
- * @author Missaoui
- */
+
 @Entity
-@Table(name="Compte")
-public class Compte {
-    
+@Table(name = "Compte")
+public class Compte implements Serializable {
+
     @Id
-    @Column(name="ID",nullable=false)
+    @Column(name = "ID", nullable = false)
     private String numero;
-    
-    
+
     @Column(name = "DATE_ADHESION")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateFinValidte;
     
+    @Column(name = "SOLDE")
+    private float solde;
     
-   @OneToOne()
+    @Column(name = "ETAT")
+    private boolean etat;
+    
+    @OneToOne
     private Adherent adherent;
 
-    public Compte(String numero, Date dateFinValidte, Adherent adherent, float solde, boolean etat) {
+    
+
+    public Compte(String numero, Date dateFinValidte, Adherent adherent,
+            float solde, boolean etat) {
         this.numero = numero;
         this.dateFinValidte = dateFinValidte;
         this.adherent = adherent;
@@ -38,7 +42,6 @@ public class Compte {
         this.etat = etat;
     }
 
-   
     public Compte() {
     }
 
@@ -49,12 +52,6 @@ public class Compte {
     public Adherent getAdherent() {
         return adherent;
     }
-
-    
-    @Column(name = "SOLDE")
-    private float solde;
-    @Column(name = "ETAT")
-    private boolean etat;
 
     public String getNumero() {
         return numero;
@@ -87,7 +84,5 @@ public class Compte {
     public void setEtat(boolean etat) {
         this.etat = etat;
     }
-    
-    
-    
+
 }

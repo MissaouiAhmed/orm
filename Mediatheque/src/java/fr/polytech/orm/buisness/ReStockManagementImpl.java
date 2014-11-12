@@ -4,15 +4,11 @@ import fr.polytech.orm.dao.DaoFactory;
 import fr.polytech.orm.entities.BonDeCommande;
 import fr.polytech.orm.entities.Fournisseur;
 import java.util.List;
-import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-/**
- *
- * @author Missaoui
- */
-@Stateful
+@Stateless
 public class ReStockManagementImpl implements ReStockManagement {
 
     @PersistenceContext

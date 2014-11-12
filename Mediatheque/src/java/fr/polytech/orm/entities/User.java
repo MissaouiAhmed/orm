@@ -7,23 +7,28 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
-/**
- *
- * @author Missaoui
- */
 @Entity
 @Table(name = "USER")
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-public abstract class User implements Serializable{
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@NamedQueries({
+    @NamedQuery(
+            name = "getUserbyId",
+            query = "SELECT u FROM User u WHERE u.id = :id "),
+    @NamedQuery(
+            name = "getAllUsers",
+            query = "SELECT u FROM User u")
+})
+public abstract class User implements Serializable {
 
-    
     private static final long serialVersionUID = 2L;
-    
+
     @Id
-    @Column(name = "ID")
+    @Column(name = "ID", nullable = false)
     private String id;
 
     @Column(name = "PRENOM")
@@ -32,45 +37,50 @@ public abstract class User implements Serializable{
     @Column(name = "NOM")
     private String nom;
 
-    
     @Column(name = "PASSWORD")
     private String password;
 
-    
     @Column(name = "LOGIN")
     private String login;
 
+    @Column(name = "DATE_NAISSANCE")
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dateNaissance;
+
+    @Column(name = "LIEU_NAISSANCE")
+    private String lieuNaissance;
+
+    @Column(name = "AGE")
+    private int age;
+
+    public User() {
+    }
+
+    public User(String id, String prenom, String nom, String password,
+            String login, Date dateNaissance, String lieuNaissance, int age) {
+        this.id = id;
+        this.prenom = prenom;
+        this.nom = nom;
+        this.password = password;
+        this.login = login;
+        this.dateNaissance = dateNaissance;
+        this.lieuNaissance = lieuNaissance;
+        this.age = age;
+    }
+
     public String getPassword() {
-	return password;
+        return password;
     }
 
     public void setPassword(String password) {
-	this.password = password;
+        this.password = password;
 
-    
     }
 
     public void setLogin(String login) {
         this.login = login;
     }
 
-    
-    
-    @Column(name = "DATE_NAISSANCE")
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dateNaissance;
-        
-    @Column(name = "LIEU_NAISSANCE")
-    private String lieuNaissance;
-    
-    @Column(name = "AGE")
-    private int age;
-    
-    
-    public User() {
-    }
-
-    
     public String getId() {
         return id;
     }
@@ -119,6 +129,8 @@ public abstract class User implements Serializable{
         this.age = age;
     }
 
-    
-    
+    public String getLogin() {
+        return login;
+    }
+
 }

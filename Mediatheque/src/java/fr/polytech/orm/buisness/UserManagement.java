@@ -5,10 +5,6 @@ import fr.polytech.orm.entities.Employee;
 import fr.polytech.orm.entities.User;
 import java.util.List;
 
-/**
- *
- * @author Missaoui
- */
 public interface UserManagement {
 
     public void addAdhrent(Adherent adherent);

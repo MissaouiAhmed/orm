@@ -9,76 +9,76 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
-/**
- *
- * @author Missaoui
- */
 @Entity
 @Table(name = "Reservation")
 @NamedQueries({
     @NamedQuery(
-    name="getReservationbyId",
-    query="SELECT l FROM Reservation l " +
-          "WHERE l.numero = :reference " +
-          ""),
+            name = "getReservationbyId",
+            query = "SELECT l FROM Reservation l WHERE l.numero = :numero "),
+    @NamedQuery(
+            name = "getALLReservations",
+            query = "SELECT l FROM Reservation l ")
 })
-
 public class Reservation implements Serializable {
 
     @Id
     @Column(name = "NUMERO", nullable = false)
     private String numero;
-    
-    
-    @ManyToOne()
+
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ADHERENT", nullable = false)
     private Adherent adherent;
-    
-    
-    @ManyToOne()
+
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ITEM", nullable = false)
     private Item item;
-    
-    
+
     @Column(name = "DATE_EMPRUNT", nullable = false)
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateEprunt;
-
+    
+    @Enumerated(EnumType.STRING)
     @Column(name = "STATUS")
     private ReservationStatus status;
-    
+
     @Column(name = "DUREE")
     private int quantité;
 
+    public Reservation() {
+    }
+
+    public Reservation(String numero, Adherent adherent, Item item,
+            Date dateEprunt, ReservationStatus status, int quantité) {
+        this.numero = numero;
+        this.adherent = adherent;
+        this.item = item;
+        this.dateEprunt = dateEprunt;
+        this.status = status;
+        this.quantité = quantité;
+    }
+
     public Adherent getAdherent() {
-	return adherent;
+        return adherent;
     }
 
     public Date getDateEprunt() {
-	return dateEprunt;
+        return dateEprunt;
     }
 
     public Item getItem() {
-	return item;
+        return item;
     }
-
-    
 
     public String getNumero() {
-	return numero;
+        return numero;
     }
-
 
     public int getQuantité() {
-	return quantité;
+        return quantité;
     }
 
-    
-
-    
-
     public ReservationStatus getStatus() {
-	return status;
+        return status;
     }
 
     public void setAdherent(Adherent adherent) {
@@ -104,10 +104,5 @@ public class Reservation implements Serializable {
     public void setStatus(ReservationStatus status) {
         this.status = status;
     }
-
-    
-   
-    
-    
 
 }

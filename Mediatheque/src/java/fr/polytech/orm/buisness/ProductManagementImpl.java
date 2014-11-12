@@ -4,16 +4,11 @@ import fr.polytech.orm.dao.DaoFactory;
 import fr.polytech.orm.entities.Exemplaire;
 import fr.polytech.orm.entities.Item;
 import java.util.List;
-import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 
-/**
- *
- * @author Missaoui
- */
-@Stateful
+@Stateless
 public class ProductManagementImpl implements ProductManagement {
 
     @PersistenceContext
@@ -28,18 +23,18 @@ public class ProductManagementImpl implements ProductManagement {
     }
 
     public List<Item> getAllItems() {
-        return em.createQuery("select a from Item a").getResultList();
-    
+        return em.createNamedQuery("getAllItems").getResultList();
+
     }
 
     public List<Exemplaire> getAllExemplaires() {
-        return em.createQuery("select a from Exemplaire a").getResultList();
+        return em.createNamedQuery("getALLExemplaires").getResultList();
 
     }
-    
-    public Exemplaire getDispExemplaire(List<Exemplaire> pExemplaires){
-        for(Exemplaire ex : pExemplaires){
-            if(ex.getEtat() != null && ex.getEtat().equals("Disponible")){
+
+    public Exemplaire getDispExemplaire(List<Exemplaire> pExemplaires) {
+        for (Exemplaire ex : pExemplaires) {
+            if (ex.getEtat() != null && ex.getEtat().equals("Disponible")) {
                 return ex;
             }
         }
@@ -48,21 +43,22 @@ public class ProductManagementImpl implements ProductManagement {
 
     public Item getItem(String reference) {
 
-        return (Item) em.createNamedQuery("getItembyId").setParameter("reference", reference).
-                getSingleResult();
+        return (Item) em.createNamedQuery("getItembyId")
+                .setParameter("reference", reference).getSingleResult();
     }
 
     public Exemplaire getExemplaire(String reference) {
 
-        return (Exemplaire) em.createNamedQuery("getExemplairebyId").setParameter("reference", reference).
-              getSingleResult();
+        return (Exemplaire) em.createNamedQuery("getExemplairebyId")
+                .setParameter("reference", reference).getSingleResult();
     }
+
     public void deleteItem(Item item) {
-     DaoFactory.itemDAO.delete(item, em);
+        DaoFactory.itemDAO.delete(item, em);
     }
-    
-     public void deleteExemplaire(Exemplaire exemplaire) {
-     DaoFactory.exemplaireDAO.delete(exemplaire, em);
+
+    public void deleteExemplaire(Exemplaire exemplaire) {
+        DaoFactory.exemplaireDAO.delete(exemplaire, em);
     }
 
 }
