@@ -57,7 +57,7 @@ public class AddReservationServlet extends HttpServlet {
         emprunt.setDuree(6);
         emprunt.setNumero(UUID.randomUUID().toString());
          gestionnaireEmprunt.addEmprunt(emprunt);
-        response.sendRedirect("Dashboard");
+       
      }
      else if (type!=null && type.equals("Annulation")){
         Reservation res = new Reservation();
@@ -65,7 +65,7 @@ public class AddReservationServlet extends HttpServlet {
         res=gestionnaireReservations.getReservation(numero);
         res.setStatus(ReservationStatus.INVALID);
         gestionnaireReservations.deleteReservation(res);
-          response.sendRedirect("Dashboard"); 
+         
      }
      else {
        /* Exemplaire e = new Exemplaire();
@@ -92,12 +92,13 @@ public class AddReservationServlet extends HttpServlet {
         res.setStatus(ReservationStatus.EN_ATTENTE);
 
         gestionnaireReservations.addReservation(res);
-        response.sendRedirect("Dashboard");
+       
     }}
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
+        response.sendRedirect("Dashboard");
     }
 
 }

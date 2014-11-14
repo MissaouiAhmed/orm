@@ -27,12 +27,13 @@ public class PreAddExemplaireServlet extends HttpServlet {
         List<Item> items = gestionnaireProdcuts.getAllItems();
         request.getSession().setAttribute("items", items);
 
-        response.sendRedirect("admin/addIExemplaire.jsp");
+        
     }
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
+        response.sendRedirect("admin/addIExemplaire.jsp");
     }
 
 }

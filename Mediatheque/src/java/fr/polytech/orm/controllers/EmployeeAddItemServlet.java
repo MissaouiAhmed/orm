@@ -1,41 +1,34 @@
 package fr.polytech.orm.controllers;
 
-import fr.polytech.orm.buisness.ReStockManagement;
-import fr.polytech.orm.entities.Fournisseur;
+import fr.polytech.orm.buisness.ProductManagement;
 import java.io.IOException;
-import java.util.UUID;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Missaoui
+ * @author Tounsi
  */
-@WebServlet(name = "AddFournisseurServlet", urlPatterns = {"/AddFournisseur"})
-public class AddFournisseurServlet extends HttpServlet {
+@WebServlet(name = "EmployeeAddItemServlet", urlPatterns = {"/EmployeeAddItem"})
+public class EmployeeAddItemServlet extends AddItemServlet {
 
     @EJB
-    ReStockManagement gestionnaireReaprovisionnement;
+    ProductManagement gestionnaireProdcuts;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        Fournisseur f = new Fournisseur();
-        f.setNom_fournisseur("f");
-        f.setNumero_fournisseur(UUID.randomUUID().toString());
-        gestionnaireReaprovisionnement.addFournisseur(f);
-
-        
+       super.processRequest(request, response);
+        response.sendRedirect("EmployeeDashboard");
+    
+      
     }
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
-        response.sendRedirect("Dashboard");
     }
 
 }

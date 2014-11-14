@@ -35,7 +35,7 @@ public class SignInServlet extends HttpServlet {
         }
 
         if (login.equalsIgnoreCase("employee") && password.equalsIgnoreCase("employee")) {
-            response.sendRedirect("Dashboard");
+            response.sendRedirect("EmployeeDashboard");
         }
     }
 

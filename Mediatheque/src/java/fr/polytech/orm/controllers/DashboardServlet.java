@@ -75,12 +75,13 @@ public class DashboardServlet extends HttpServlet {
          List<Souhait> souhaits = gestionnaireSouhaits.getAllSouhaits();
         request.getSession().setAttribute("souhaits", souhaits);
         
-        response.sendRedirect("employee/Dashboard.jsp");
+        
     }
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
+        response.sendRedirect("admin/Dashboard.jsp");
     }
 
 }

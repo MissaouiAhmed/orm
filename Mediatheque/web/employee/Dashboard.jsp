@@ -26,7 +26,7 @@
 
         <div class="container-fluid">
             <div class="row">
-                <%@include file="../employee/LeftBar.html" %>
+                <%@include file="LeftBar.html" %>
                 <!-- --------------------------------------------------------------- -->          
 
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -102,7 +102,7 @@
                                         out.print("<td>" + item.getTitre()+ "</td>");
                                         out.print("<td>" + item.getAuteur()+ "</td>");
                                         out.print ("<td>"+"molka"+"</td>");
-                                        out.print ("<td><a href='../DeleteItem?reference="+item.getReference()+"'>REMOVE</td>");
+                                        out.print ("<td><a href='../EmployeeDeleteItem?reference="+item.getReference()+"'>REMOVE</td>");
                                      
                                       
                                         out.print("</tr>");
@@ -146,7 +146,7 @@
                                         out.print("<td>" + exemplaire.getEtat()+ "</td>");
                                         out.print("<td>" + exemplaire.getNb_emprunt()+ "</td>");
                                         out.print("<td>" + exemplaire.getItem().getReference() + "</td>");
-                                        out.print ("<td><a href='../AddExemplaire?type=Annulation&reference="+exemplaire.getReference()+"'>REMOVE</td>");
+                                        out.print ("<td><a href='../EmployeeAddExemplaire?type=Annulation&reference="+exemplaire.getReference()+"'>REMOVE</td>");
                                      
                                         out.print("</tr>");
 
@@ -189,8 +189,8 @@
                                         out.print("<td>" + emprunt.getAdherent().getId() + "</td>");
                                         out.print("<td>" + emprunt.getExemplaire().getReference() + "</td>");
                                         out.print("<td>" + emprunt.getDateEprunt() + "</td>");
-                             out.print ("<td><a href='../AddEmprunt?type=Validation&numero="+emprunt.getNumero()+"'>VALIDATE</td>");
-                             out.print ("<td><a href='../AddEmprunt?type=Annulation&numero="+emprunt.getNumero()+"'>REMOVE</td>");
+                             out.print ("<td><a href='../EmployeeAddEmprunt?type=Validation&numero="+emprunt.getNumero()+"'>VALIDATE</td>");
+                             out.print ("<td><a href='../EmployeeAddEmprunt?type=Annulation&numero="+emprunt.getNumero()+"'>REMOVE</td>");
                             
                                         out.print("</tr>");
 
@@ -228,8 +228,8 @@
                                         out.print("<td>" + reservation.getItem().getReference() + "</td>");
                                         out.print("<td>" + reservation.getQuantité() + "</td>");
                                          out.print("<td>" + reservation.getStatus() + "</td>");
-                            out.print ("<td><a href='../AddReservation?type=Validation&numero="+reservation.getNumero()+"'>VALIDATE</td>");
-                             out.print ("<td><a href='../AddReservation?type=Annulation&numero="+reservation.getNumero()+"'>REMOVE</td>");
+                            out.print ("<td><a href='../EmployeeAddReservation?type=Validation&numero="+reservation.getNumero()+"'>VALIDATE</td>");
+                             out.print ("<td><a href='../EmployeeAddReservation?type=Annulation&numero="+reservation.getNumero()+"'>REMOVE</td>");
                                     
                                         out.print("</tr>");
 
