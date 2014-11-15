@@ -21,7 +21,7 @@
 
         <div class="container-fluid">
             <div class="row">
-                <%@include file="../navigation/LeftBar.html" %>
+                <%@include file="LeftBar.html" %>
                 <!-- --------------------------------------------------------------- -->          
 
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -30,7 +30,7 @@
 
                     <h2 class="sub-header">Reservation</h2>
 
-                    <form action="../AddReservation" method="post">
+                    <form action="../EmployeeAddReservation" method="post">
                         <div class="form-group">
                              <label for="item">Item</label>
                              <select id="selecteditem" name="selecteditem" >

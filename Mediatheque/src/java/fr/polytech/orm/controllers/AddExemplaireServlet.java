@@ -41,7 +41,7 @@ public class AddExemplaireServlet extends HttpServlet {
            // exemplaire.setReference("reference");
             Exemplaire exemplaire=gestionnaireProdcuts.getExemplaire(reference);
             gestionnaireProdcuts.deleteExemplaire(exemplaire);
-            response.sendRedirect("Dashboard"); 
+           
         }
         else {
         String selecteditem = request.getParameter("selecteditem");
@@ -57,13 +57,14 @@ public class AddExemplaireServlet extends HttpServlet {
         Item item= new Item();
         item.setReference("001");*/
         
-        response.sendRedirect("Dashboard");
+      
         
     }
     }
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
+          response.sendRedirect("Dashboard");
     }
 
 }

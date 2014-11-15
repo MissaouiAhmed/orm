@@ -18,7 +18,7 @@
 
         <div class="container-fluid">
             <div class="row">
-                <%@include file="../navigation/LeftBar.html" %>
+                <%@include file="LeftBar.html" %>
                 <!-- --------------------------------------------------------------- -->          
 
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -27,7 +27,7 @@
 
                     <h2 class="sub-header">Ajout Fournisseur</h2>
 
-                    <form action="../AddFournisseur" method="post">
+                    <form action="../EmployeeAddFournisseur" method="post">
                         <table>
                             <tr><td>ID:</td><td><input type="text" id = "id" name="id" /></td></tr>
                             <tr><td>FirstName</td><td><input type="text" id = "firstName" name="firstName" /></td></tr>

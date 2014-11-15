@@ -24,7 +24,7 @@ public class ReservationManagementImpl implements ReservationManagement {
 
     public Reservation getReservation(String reference) {
 
-        return (Reservation) em.createNamedQuery("getReservationbyId").setParameter("reference", reference).
+        return (Reservation) em.createNamedQuery("getReservationbyId").setParameter("numero", reference).
                 getSingleResult();
     }
 

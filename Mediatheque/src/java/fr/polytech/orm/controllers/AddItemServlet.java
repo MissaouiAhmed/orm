@@ -37,12 +37,13 @@ public class AddItemServlet extends HttpServlet {
         ad.setDateDispostion(new Date());
         gestionnaireProdcuts.addItem(ad);
 
-        response.sendRedirect("Dashboard");
+        
     }
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
+        response.sendRedirect("Dashboard");
     }
 
 }

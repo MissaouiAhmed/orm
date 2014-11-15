@@ -18,7 +18,7 @@
 
         <div class="container-fluid">
             <div class="row">
-                <%@include file="../navigation/LeftBar.html" %>
+                <%@include file="LeftBar.html" %>
                 <!-- --------------------------------------------------------------- -->          
 
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -27,7 +27,7 @@
 
                     <h2 class="sub-header">Ajout Item</h2>
 
-                    <form role="form" action="../AddItem" method="post">
+                    <form role="form" action="../EmployeeAddItem" method="post">
                         <div class="form-group">
                             <label for="reference">reference</label>
                             <input type="text" class="form-control" id="reference" placeholder="reference"

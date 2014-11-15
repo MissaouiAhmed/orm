@@ -45,7 +45,7 @@ public class AddEmpruntServlet extends HttpServlet {
         res=gestionnaireEmprunt.getEmprunt(numero);
         res.setStatus(EmpruntStatus.EN_COURS);
         gestionnaireEmprunt.updateEmprunt(res);
-          response.sendRedirect("Dashboard");
+          
      }
      else if (type!=null && type.equals("Annulation")){
         Emprunt res = new Emprunt();
@@ -53,7 +53,7 @@ public class AddEmpruntServlet extends HttpServlet {
         res=gestionnaireEmprunt.getEmprunt(numero);
         res.setStatus(EmpruntStatus.TERMINE);
         gestionnaireEmprunt.deleteEmprunt(res);
-          response.sendRedirect("Dashboard"); 
+          
      }
      else {
         /*Exemplaire e = new Exemplaire();
@@ -78,13 +78,14 @@ public class AddEmpruntServlet extends HttpServlet {
         
         gestionnaireEmprunt.addEmprunt(em);
 
-        response.sendRedirect("Dashboard");
+       
 
     }
     }
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
+         response.sendRedirect("Dashboard");
     }
 
 }

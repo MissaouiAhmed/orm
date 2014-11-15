@@ -55,13 +55,14 @@ public class AddCommandeServlet extends HttpServlet {
         commande.getLignesCommandes().add(l2);
 
         gestionnaireReaprovisionnement.addCommmande(commande);
-        response.sendRedirect("Dashboard");
+       
 
     }
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
+         response.sendRedirect("Dashboard");
     }
 
 }
