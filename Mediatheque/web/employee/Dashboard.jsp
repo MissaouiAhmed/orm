@@ -261,7 +261,10 @@
                                             getAttribute("fournisseurs");
                                     for (Fournisseur fournisseur : fournisseurs) {
                                         out.print("<tr class='info'>");
+                                        out.print("<td></td>");
                                         out.print("<td>" + fournisseur.getNumero_fournisseur() + "</td>");
+                                        out.print("<td>" + fournisseur.getNom_fournisseur() + "</td>");
+                                        out.print("<td></td>");
                                         out.print("</tr>");
 
                                     }
@@ -308,7 +311,7 @@
                     </div>
                     <!-- ************************************************************************************** -->                                    
 
-                    <h2 class="sub-header">Liste des souhaits </h2>
+                                      <h2 class="sub-header">Liste des Souhaits </h2>
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead>
@@ -316,30 +319,37 @@
                                     <th>#</th>
                                     <th>ID</th>
                                     <th>DESCRIPTION</th>
-                                    <th>ITEM_NAME</th>      
-                                    <th>ITEM_TYPE</th>  
+                                    <th>ITEM_NAME</th>                                    
+                                    <th>ITEM_TYPE</th>                                    
                                     
                                 </tr>
                             </thead>
                             <tbody>                               
 
-                              <%
-                                    List<Souhait> souhaits = (List) request.getSession().
-                                            getAttribute("souhaits");
+                                <%
+                                    List<Souhait> souhaits = (List) request.getSession().getAttribute("souhaits");
                                     for (Souhait souhait : souhaits) {
-                                        out.print("<tr class='info'>");
-                                        out.print("<td>" + souhait.getNumero() + "</td>");
+                                        out.print("<tr class='danger'>");
+                                        out.print("<td></td>");
+                                        
+                                        out.print("<td>" + souhait.getNumero()+ "</td>");
                                         out.print("<td>" + souhait.getDescription()+ "</td>");
                                         out.print("<td>" + souhait.getItemName()+ "</td>");
                                         out.print("<td>" + souhait.getItemType()+ "</td>");
+
                                         out.print("</tr>");
 
                                     }
                                 %>     
 
+
+
                             </tbody>
                         </table>
-                    </div>
+                    </div> 
+                       
+                             <!-- ************************************************************************************** -->            
+               
                 </div>
             </div>
         </div>

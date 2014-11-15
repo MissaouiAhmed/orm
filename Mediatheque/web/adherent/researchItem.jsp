@@ -32,14 +32,14 @@
 
 
                     <h2 class="sub-header">Research Item</h2>
-
+                    <h6>Veuillez inserer les critéres de votre recherche :</h6>
                     <form action="../ResearchItem" method="post">
                         <table>
-                            <tr><td>Item : </td><td><input type="text" id = "item" name="item" /></td></tr>
+                            <tr><td>Reference Item : </td><td>&nbsp;&nbsp;<input type="text" id = "Refitem" name="Refitem" /></td></tr>
                         </table>
                         <input type="submit" value="CreateRecord" />
                     </form>
-
+                    <h6><I>* Si vous ne trouverez pas votre item, vous pouvez contacter un employee en exprimant votre souhait et il sera pris en compte, Merci</I></h6>
                    
                     </div>
                 </div>

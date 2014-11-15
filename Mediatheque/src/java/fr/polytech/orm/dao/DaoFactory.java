@@ -28,4 +28,5 @@ public class DaoFactory {
 
     public static GenericDao<BonDeCommande, String> bonDeCommandeDAO = new GenericDaoImpl<BonDeCommande, String>();
 
+    public static GenericDao<Souhait, String> SouhaitDAO = new GenericDaoImpl<Souhait, String>();
 }
