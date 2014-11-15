@@ -46,7 +46,7 @@ public class AddEmpruntServlet extends HttpServlet {
         res.setStatus(EmpruntStatus.EN_COURS);
         gestionnaireEmprunt.updateEmprunt(res);
         Exemplaire exemplaire = gestionnaireProducts.getExemplaire(selectedExemplaire);
-        exemplaire.setEtat("NonDisoponible");
+        exemplaire.setEtat("NonDisponible");
         nbemprunt++;
         exemplaire.setNb_emprunt(nbemprunt);
        gestionnaireProducts.updateExemplaire(exemplaire);
@@ -59,7 +59,7 @@ public class AddEmpruntServlet extends HttpServlet {
         res.setStatus(EmpruntStatus.TERMINE);
         gestionnaireEmprunt.updateEmprunt(res);
          Exemplaire exemplaire = gestionnaireProducts.getExemplaire(selectedExemplaire);
-        exemplaire.setEtat("Disoponible");
+        exemplaire.setEtat("Disponible");
        gestionnaireProducts.updateExemplaire(exemplaire);
         //gestionnaireEmprunt.deleteEmprunt(res);
           
@@ -86,7 +86,7 @@ public class AddEmpruntServlet extends HttpServlet {
         em.setDateEprunt(new Date());
         em.setDuree(6);
         em.setNumero(UUID.randomUUID().toString());
-        
+        em.setStatus(EmpruntStatus.EN_COURS);
         gestionnaireEmprunt.addEmprunt(em);
 
        
