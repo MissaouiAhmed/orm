@@ -25,27 +25,28 @@ public class SignInServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String login = request.getParameter("login");
         String password = request.getParameter("password");
-        
-        List<Adherent> list = gestionnaireAdhrent.getAllAdherent();
-        for (Adherent adherent : list) {
-            if (login.equalsIgnoreCase("admin") && password.equalsIgnoreCase("admin")) {
-                response.sendRedirect("Dashboard");
-            }else  if (login.equalsIgnoreCase("employee") && password.equalsIgnoreCase("employee")) {
-                response.sendRedirect("EmployeeDashboard");
-            }else if (login.equalsIgnoreCase(adherent.getLogin()) && password.equalsIgnoreCase(adherent.getPassword())) {
-                  HttpSession s;
-                  s = request.getSession();
-                  s.setAttribute("ad",adherent);
-                  response.sendRedirect("aDashboard");
-            } else{
-                response.sendRedirect("#");
+
+        if (login.equalsIgnoreCase("admin") && password.equalsIgnoreCase("admin")) {
+            response.sendRedirect("Dashboard");
+        } else if (login.equalsIgnoreCase("employee") && password.equalsIgnoreCase("employee")) {
+            response.sendRedirect("EmployeeDashboard");
+        } else {
+            List<Adherent> list = gestionnaireAdhrent.getAllAdherent();
+            for (Adherent adherent : list) {
+                if (login.equalsIgnoreCase(adherent.getLogin()) && password.equalsIgnoreCase(adherent.getPassword())) {
+                    HttpSession s;
+                    s = request.getSession();
+                    s.setAttribute("ad", adherent);
+                    response.sendRedirect("aDashboard");
+                } else {
+                    response.sendRedirect("#");
+                }
             }
         }
     }
-    
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response)
