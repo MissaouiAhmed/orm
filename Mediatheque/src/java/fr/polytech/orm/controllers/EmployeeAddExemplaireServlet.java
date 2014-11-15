@@ -19,7 +19,7 @@ public class EmployeeAddExemplaireServlet extends AddExemplaireServlet {
             throws ServletException, IOException {
         
         super.processRequest(request, response);
-        response.sendRedirect("EmployeeDashboard");
+        response.sendRedirect("EmployeeProductManagement");
      
        
     }

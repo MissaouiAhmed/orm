@@ -18,7 +18,7 @@ public class EmployeeDeleteItemServlet extends DeleteItemServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
  super.processRequest(request, response);
-        response.sendRedirect("EmployeeDashboard");
+        response.sendRedirect("EmployeeProductManagement");
         
 
         

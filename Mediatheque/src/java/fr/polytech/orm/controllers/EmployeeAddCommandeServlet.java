@@ -18,7 +18,7 @@ public class EmployeeAddCommandeServlet extends AddCommandeServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
  super.processRequest(request, response);
-        response.sendRedirect("EmployeeDashboard");
+        response.sendRedirect("EmployeeFournisseurManagement");
       
 
     }

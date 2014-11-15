@@ -14,7 +14,7 @@
     </head>
 
     <body>
-        <%@include file="../navigation/TopBar.html" %>
+        <%@include file="TopBar.html" %>
 
 
         <div class="container-fluid">
@@ -35,7 +35,7 @@
 
                     <h2 class="sub-header">Update adherent Adherent</h2>
 
-                    <form role="form" action="../UpdateAdherent" method="post">
+                    <form role="form" action="../EmployeeUpdateAdherent" method="post">
                         
                         <div class="form-group">
                             <label for="ID">ID</label>

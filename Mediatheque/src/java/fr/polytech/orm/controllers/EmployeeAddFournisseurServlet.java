@@ -17,7 +17,7 @@ public class EmployeeAddFournisseurServlet extends AddFournisseurServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         super.processRequest(request, response);
-        response.sendRedirect("EmployeeDashboard");
+        response.sendRedirect("EmployeeFournisseurManagement");
      
 
         
