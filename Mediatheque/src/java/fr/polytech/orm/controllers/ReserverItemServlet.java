@@ -42,27 +42,27 @@ public class ReserverItemServlet extends HttpServlet {
         
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        try {
-            Item item = (Item) request.getSession().getAttribute("item");
-            Adherent ad = (Adherent) request.getSession().getAttribute("ad");
-            Reservation res = new Reservation();
-            Item it = gestionnaireProducts.getItem(item.getReference());
-            res.setItem(it);
- 
-            Adherent adherent = gestionnaireAdherent.getAdherent(ad.getId());
-            res.setAdherent(adherent);
-            res.setNumero(UUID.randomUUID().toString());
-            res.setDateEprunt(new Date());
-            res.setQuantité(5);
-            res.setStatus(ReservationStatus.EN_ATTENTE);
+        
+             String operation = request.getParameter("operation");
+      
+            if(operation.equals("reserver")){
+        
+                String reference = request.getParameter("reference");
+                Adherent ad = (Adherent) request.getSession().getAttribute("ad");
+                Reservation res = new Reservation();
+                Item it = gestionnaireProducts.getItem(reference);
+                res.setItem(it);
 
-            gestionnaireReservations.addReservation(res);
-            response.sendRedirect("aDashboard");
-        } finally {
-            out.close();
-        }
+                Adherent adherent = gestionnaireAdherent.getAdherent(ad.getId());
+                res.setAdherent(adherent);
+                res.setNumero(UUID.randomUUID().toString());
+                res.setDateEprunt(new Date());
+                res.setQuantité(5);
+                res.setStatus(ReservationStatus.EN_ATTENTE);
+
+                gestionnaireReservations.addReservation(res);
+                response.sendRedirect("aDashboard");
+            }
         
     }
 

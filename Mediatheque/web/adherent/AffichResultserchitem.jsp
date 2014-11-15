@@ -51,7 +51,8 @@
                                     List<Item> items = (List) request.getSession().getAttribute("item");
                                     for (Item item : items) {
                                         out.print("<tr class='info'>");
-                                        out.print("<td><a href='../ReserverItem'>Reserver</a></td>");
+                                        out.print ("<td><a href='../ReserverItem?operation=reserver&reference="+item.getReference()+"'>RESERVER</td>");
+                                      
                                         
                                         out.print("<td>" + item.getTitre()+ "</td>");
                                         out.print("<td>" + item.getAuteur()+ "</td>");
