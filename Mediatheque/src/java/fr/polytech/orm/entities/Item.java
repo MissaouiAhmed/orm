@@ -28,7 +28,26 @@ import javax.persistence.Temporal;
     @NamedQuery(
             name = "getItemExemplaires",
             query = "SELECT i.exemplaires FROM Item i "
-            + " WHERE i.reference = :reference")
+            + " WHERE i.reference = :reference"),
+    @NamedQuery(
+            name = "getItembyTitre",
+            query = "SELECT i FROM Item i WHERE i.titre like :titre "),
+    @NamedQuery(
+            name = "getItemsbyAuteur",
+            query = "SELECT i FROM Item i WHERE i.auteur like :auteur "),
+    @NamedQuery(
+            name = "getItemsbyDateEdition",
+            query = "SELECT i FROM Item i WHERE i.dateEdition = :dateEdition "),
+    @NamedQuery(
+            name = "getItemsbytype",
+            query = "SELECT i FROM Item i WHERE i.type.id = :type "),
+    @NamedQuery(
+            name = "getItemsbyTitreAndAuteur",
+            query = "SELECT i FROM Item i  WHERE i.titre like :titre and i.auteur like :auteur "),
+    @NamedQuery(
+            name = "getItemsbyALL",
+            query = "SELECT i FROM Item i  WHERE i.titre like :titre and i.auteur like :auteur "
+                    + "and i.type.id = :type and i.dateEdition = :dateEdition"),
 })
 public class Item implements Serializable {
 
