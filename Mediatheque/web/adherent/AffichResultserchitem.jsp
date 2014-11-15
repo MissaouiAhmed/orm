@@ -51,7 +51,7 @@
                                 <%
                                     Item item = (Item) request.getSession().getAttribute("item");
                                         out.print("<tr class='info'>");
-                                        out.print("<td><a href='../#'>Reserver</a></td>");
+                                        out.print("<td><a href='../ReserverItem'>Reserver</a></td>");
                                         
                                         out.print("<td>" + item.getReference() + "</td>");
                                         out.print("<td>" + item.getTitre()+ "</td>");

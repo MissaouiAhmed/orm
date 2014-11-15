@@ -10,9 +10,7 @@
     </head>
 
     <body>
-
         <div class="container">
-
             <form class="form-signin" role="form" action="SignIn" method="post">
                 <h2 class="form-signin-heading">Please sign in</h2>
                 <input type="text" class="form-control" placeholder="Login" required autofocus id="login" name="login" />

@@ -6,4 +6,10 @@ import java.util.List;
 public interface SouhaitManagement {
 
     public List<Souhait> getAllSouhaits();
+    
+    public void addSouhait(Souhait souhait);
+    
+    public void updateSouhait(Souhait souhait);
+    
+    public void deleteSouhait(Souhait souhait);
 }

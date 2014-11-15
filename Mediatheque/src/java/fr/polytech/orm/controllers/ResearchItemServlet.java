@@ -29,7 +29,7 @@ public class ResearchItemServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String reference = request.getParameter("item");
+        String reference = request.getParameter("Refitem");
         Item item = gestionnaireProdcuts.getItem(reference);
         request.getSession().setAttribute("item", item);
         
