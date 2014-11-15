@@ -66,7 +66,8 @@
                                         out.print("<td>" + adherent.getCompte().getNumero()+ "</td>");
                                         out.print("<td>" + adherent.getCompte().isEtat()+ "</td>");
                                         out.print("<td>" + adherent.getCompte().getDateFinValidte()+ "</td>");                                        
-
+//out.print ("<td><a href='../EmployeeAddAdherent?type=Annulation&Id="+adherent.getId()+"'>REMOVE</td>");
+                                     
                                         out.print("</tr>");
 
                                     }
@@ -175,6 +176,7 @@
                                     <th>IdAdherent</th>
                                     <th>IdExemplaire</th>   
                                     <th>DateEmprunt</th> 
+                                    <th>StatusEmprunt</th> 
                                      <th> </th>
                                       <th> </th>
                                 </tr>
@@ -189,8 +191,9 @@
                                         out.print("<td>" + emprunt.getAdherent().getId() + "</td>");
                                         out.print("<td>" + emprunt.getExemplaire().getReference() + "</td>");
                                         out.print("<td>" + emprunt.getDateEprunt() + "</td>");
-                             out.print ("<td><a href='../EmployeeAddEmprunt?type=Validation&numero="+emprunt.getNumero()+"'>VALIDATE</td>");
-                             out.print ("<td><a href='../EmployeeAddEmprunt?type=Annulation&numero="+emprunt.getNumero()+"'>REMOVE</td>");
+                                        out.print("<td>" + emprunt.getStatus() + "</td>");
+                             out.print ("<td><a href='../EmployeeAddEmprunt?type=Validation&numero="+emprunt.getNumero()+"&selectedexemplaire="+emprunt.getExemplaire().getReference()+"'>VALIDATE</td>");
+                             out.print ("<td><a href='../EmployeeAddEmprunt?type=Annulation&numero="+emprunt.getNumero()+"&selectedexemplaire="+emprunt.getExemplaire().getReference()+"'>REMOVE</td>");
                             
                                         out.print("</tr>");
 
@@ -228,7 +231,7 @@
                                         out.print("<td>" + reservation.getItem().getReference() + "</td>");
                                         out.print("<td>" + reservation.getQuantité() + "</td>");
                                          out.print("<td>" + reservation.getStatus() + "</td>");
-                            out.print ("<td><a href='../EmployeeAddReservation?type=Validation&numero="+reservation.getNumero()+"'>VALIDATE</td>");
+                            out.print ("<td><a href='../EmployeeAddReservation?type=Validation&numero="+reservation.getNumero()+"&selecteditem="+reservation.getItem().getReference()+"'>VALIDATE</td>");
                              out.print ("<td><a href='../EmployeeAddReservation?type=Annulation&numero="+reservation.getNumero()+"'>REMOVE</td>");
                                     
                                         out.print("</tr>");

@@ -26,6 +26,12 @@ public class AddAdherentServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String type = request.getParameter("type");
+        if (type!=null && type.equals("Annulation")){
+            //TODO
+          
+     }
+        else{
 
         String prenom = request.getParameter("PRENOM");
         String nom = request.getParameter("NOM");
@@ -64,7 +70,7 @@ public class AddAdherentServlet extends HttpServlet {
 
 
     }
-
+    }
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);

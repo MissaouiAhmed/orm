@@ -6,6 +6,7 @@ import fr.polytech.orm.buisness.ReservationManagement;
 import fr.polytech.orm.buisness.UserManagement;
 import fr.polytech.orm.entities.Adherent;
 import fr.polytech.orm.entities.Emprunt;
+import fr.polytech.orm.entities.EmpruntStatus;
 import fr.polytech.orm.entities.Exemplaire;
 import fr.polytech.orm.entities.Item;
 import fr.polytech.orm.entities.Reservation;
@@ -55,8 +56,9 @@ public class AddReservationServlet extends HttpServlet {
         emprunt.setExemplaire(gestionnaireProducts.getDispExemplaire(res.getItem().getExemplaires()));
         emprunt.setDateEprunt(new Date());
         emprunt.setDuree(6);
+        emprunt.setStatus(EmpruntStatus.EN_COURS);
         emprunt.setNumero(UUID.randomUUID().toString());
-         gestionnaireEmprunt.addEmprunt(emprunt);
+        gestionnaireEmprunt.addEmprunt(emprunt);
        
      }
      else if (type!=null && type.equals("Annulation")){

@@ -23,5 +23,6 @@ public interface ProductManagement {
     public Exemplaire getDispExemplaire(List<Exemplaire> Exemplaires);
 
     public void deleteExemplaire(Exemplaire exemplaire);
+    public void updateExemplaire(Exemplaire exemplaire);
 
 }
