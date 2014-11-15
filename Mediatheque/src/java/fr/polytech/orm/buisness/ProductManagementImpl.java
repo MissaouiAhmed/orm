@@ -60,5 +60,9 @@ public class ProductManagementImpl implements ProductManagement {
     public void deleteExemplaire(Exemplaire exemplaire) {
         DaoFactory.exemplaireDAO.delete(exemplaire, em);
     }
+    
+     public void updateExemplaire(Exemplaire exemplaire) {
+        DaoFactory.exemplaireDAO.update(exemplaire, em);
+    }
 
 }

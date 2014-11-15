@@ -39,20 +39,29 @@ public class AddEmpruntServlet extends HttpServlet {
  String numero = request.getParameter("numero");
         String type = request.getParameter("type");
      if(type!=null && type.equals("Validation")){
-
-        Emprunt res = new Emprunt();
-        res.setNumero(numero);
-        res=gestionnaireEmprunt.getEmprunt(numero);
+       int nbemprunt=0;
+       // Emprunt res = new Emprunt();
+        //res.setNumero(numero);
+        Emprunt res=gestionnaireEmprunt.getEmprunt(numero);
         res.setStatus(EmpruntStatus.EN_COURS);
         gestionnaireEmprunt.updateEmprunt(res);
-          
+        Exemplaire exemplaire = gestionnaireProducts.getExemplaire(selectedExemplaire);
+        exemplaire.setEtat("NonDisoponible");
+        nbemprunt++;
+        exemplaire.setNb_emprunt(nbemprunt);
+       gestionnaireProducts.updateExemplaire(exemplaire);
+        
      }
      else if (type!=null && type.equals("Annulation")){
         Emprunt res = new Emprunt();
         res.setNumero(numero);
         res=gestionnaireEmprunt.getEmprunt(numero);
         res.setStatus(EmpruntStatus.TERMINE);
-        gestionnaireEmprunt.deleteEmprunt(res);
+        gestionnaireEmprunt.updateEmprunt(res);
+         Exemplaire exemplaire = gestionnaireProducts.getExemplaire(selectedExemplaire);
+        exemplaire.setEtat("Disoponible");
+       gestionnaireProducts.updateExemplaire(exemplaire);
+        //gestionnaireEmprunt.deleteEmprunt(res);
           
      }
      else {
@@ -65,9 +74,11 @@ public class AddEmpruntServlet extends HttpServlet {
         Adherent add = new Adherent();
         add.setId(UUID.randomUUID().toString());
         add.setPrenom(UUID.randomUUID().toString());*/
+         
        Emprunt em = new Emprunt();
         Exemplaire exemplaire = gestionnaireProducts.getExemplaire(selectedExemplaire);
         em.setExemplaire(exemplaire);
+        
  
          Adherent adherent = gestionnaireAdherent.getAdherent(selectedAdherent);
         em.setAdherent(adherent);
