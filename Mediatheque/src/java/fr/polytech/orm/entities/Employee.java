@@ -15,10 +15,19 @@ import javax.persistence.Table;
     @NamedQuery(
             name = "getAllEmployees",
             query = "SELECT e FROM Employee e"),
-     @NamedQuery(
+    @NamedQuery(
+            name = "getEmployeeByid",
+            query = "SELECT e FROM Employee e WHERE"
+            + " e.id = :id "),
+    @NamedQuery(
             name = "getValidedEmprunts",
             query = "SELECT e.validatesEmprunts FROM Employee e WHERE"
-                    + " e.id = :id ")
+            + " e.id = :id "),
+    @NamedQuery(
+            name = "removeEmployee",
+            query = "DELETE FROM Employee e WHERE"
+            + " e.id = :id ")
+
 })
 public class Employee extends User {
 
@@ -35,6 +44,11 @@ public class Employee extends User {
 
     public void setValidatesEmprunts(List<Emprunt> validatesEmprunts) {
         this.validatesEmprunts = validatesEmprunts;
+    }
+
+    @Override
+    public String getId() {
+        return super.getId(); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

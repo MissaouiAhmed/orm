@@ -2,6 +2,7 @@
 
 import java.io.Serializable;
 import javax.persistence.EntityManager;
+import javax.persistence.LockModeType;
 
 /**
  *
@@ -20,7 +21,6 @@ public class GenericDaoImpl<T, PK extends Serializable>
 
     @Override
     public void create(T t, EntityManager e) {
-
         e.persist(t);
     }
 

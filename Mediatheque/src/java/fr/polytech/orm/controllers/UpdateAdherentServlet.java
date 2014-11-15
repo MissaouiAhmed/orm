@@ -18,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Missaoui
  */
-@WebServlet(name = "AddAdherentServlet", urlPatterns = {"/AddAdherent"})
-public class AddAdherentServlet extends HttpServlet {
+@WebServlet(name = "UpdateAdherentServlet", urlPatterns = {"/UpdateAdherent"})
+public class UpdateAdherentServlet extends HttpServlet {
 
     @EJB
     UserManagement gestionnaireAdhrent;
@@ -31,36 +31,22 @@ public class AddAdherentServlet extends HttpServlet {
         String nom = request.getParameter("NOM");
         String password = request.getParameter("PASSWORD");
         String login = request.getParameter("LOGIN");
-        String compteId = request.getParameter("COMPTEID");
         String age = request.getParameter("AGE");
         String montant = request.getParameter("MONTANT");
         String lieu = request.getParameter("lieu");
+        String id = request.getParameter("ID");
 
-        Compte compte = new Compte();
-        compte.setNumero(compteId);
-        compte.setEtat(true);
-        compte.setDateFinValidte(null);
-        compte.setSolde(Integer.parseInt(montant));
-
-        Calendar date = Calendar.getInstance();
-        date.setTime(new Date());
-        date.add(Calendar.YEAR, 1);
-        compte.setDateFinValidte(date.getTime());
-
-        Adherent ad = new Adherent();
-        ad.setId(UUID.randomUUID().toString());
+        
+        Adherent ad = gestionnaireAdhrent.getAdherent(id);
         ad.setAge(Integer.parseInt(age));
-        ad.setCompte(compte);
-        compte.setAdherent(ad);
-        ad.setDateAhesion(new Date());
         ad.setLieuNaissance(lieu);
         ad.setLogin(login);
         ad.setNom(nom);
-        ad.setNumeroCarte(UUID.randomUUID().toString());
         ad.setPassword(password);
         ad.setPrenom(prenom);
+        ad.getCompte().setSolde(Float.parseFloat(montant));
 
-        gestionnaireAdhrent.addAdhrent(ad);
+        gestionnaireAdhrent.updateAdhrent(ad);
 
 
     }

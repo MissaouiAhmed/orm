@@ -19,11 +19,11 @@
         <%@include file="../navigation/TopBar.html" %>
 
         <div class="container-fluid">
-            <div class="row">
-                <%@include file="../navigation/LeftBar.html" %>
+            <div>
+                <%--<%@include file="../navigation/LeftBar.html" %>--%>
                 <!-- --------------------------------------------------------------- -->          
 
-                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <div>
                     <h1 class="page-header">Dashboard Mediatheque </h1>
 
 

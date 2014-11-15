@@ -25,8 +25,13 @@ public class AddFournisseurServlet extends HttpServlet {
             throws ServletException, IOException {
 
         Fournisseur f = new Fournisseur();
-        f.setNom_fournisseur("f");
-        f.setNumero_fournisseur(UUID.randomUUID().toString());
+        
+             String id = request.getParameter("ID");
+        String nom = request.getParameter("FOUNISSEUR");
+        f.setNumero_fournisseur(id);
+        
+        f.setNom_fournisseur(nom);
+        
         gestionnaireReaprovisionnement.addFournisseur(f);
 
         
@@ -35,7 +40,7 @@ public class AddFournisseurServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
-        response.sendRedirect("Dashboard");
+        response.sendRedirect("FournisseurManagement");
     }
 
 }

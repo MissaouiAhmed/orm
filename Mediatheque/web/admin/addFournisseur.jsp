@@ -17,24 +17,28 @@
 
 
         <div class="container-fluid">
-            <div class="row">
-                <%@include file="../navigation/LeftBar.html" %>
+            <div>
+                <%--<%@include file="../navigation/LeftBar.html" %>--%>
                 <!-- --------------------------------------------------------------- -->          
 
-                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <div>
                     <h1 class="page-header">Dashboard Mediatheque </h1>
 
 
                     <h2 class="sub-header">Ajout Fournisseur</h2>
 
-                    <form action="../AddFournisseur" method="post">
-                        <table>
-                            <tr><td>ID:</td><td><input type="text" id = "id" name="id" /></td></tr>
-                            <tr><td>FirstName</td><td><input type="text" id = "firstName" name="firstName" /></td></tr>
-                            <tr><td>LastName</td><td><input type="text" id = "lastName" name="lastName" /></td></tr>
-                        </table>
-                        <input type="submit" value="CreateRecord" />
-                    </form>
+                    
+                      <form role="form" action="../AddFournisseur" method="post">
+                        <div class="form-group">
+                            <label for="ID">ID</label>
+                            <input type="text" class="form-control" id="ID" placeholder="ID" name="ID">
+                        </div>
+                        <div class="form-group">
+                            <label for="FOUNISSEUR">NOM FOUNISSEUR</label>
+                            <input type="text" class="form-control" id="FOUNISSEUR" placeholder="FOUNISSEUR" name="FOUNISSEUR">
+                        </div>
+
+                        <button type="submit" class="btn btn-default">ADD FOUNISSEUR</button>
 
                    
                     </div>

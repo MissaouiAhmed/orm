@@ -28,8 +28,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Missaoui
  */
-@WebServlet(name = "DashboardServlet", urlPatterns = {"/Dashboard"})
-public class DashboardServlet extends HttpServlet {
+@WebServlet(name = "FournisseurManagementervlet", urlPatterns = {"/FournisseurManagement"})
+public class FournisseurManagementervlet extends HttpServlet {
 
     @EJB
     UserManagement gestionnaireAdhrent;
@@ -52,32 +52,13 @@ public class DashboardServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        List<Adherent> list = gestionnaireAdhrent.getAllAdherent();
-        request.getSession().setAttribute("adherents", list);
-
-        List<Item> items = gestionnaireProdcuts.getAllItems();
-        request.getSession().setAttribute("items", items);
-
-        List<Exemplaire> exemplaires = gestionnaireProdcuts.getAllExemplaires();
-        request.getSession().setAttribute("exemplaires", exemplaires);
-
-        List<Emprunt> emprunts = gestionnaireEmprunt.getAllEmprunt();
-        request.getSession().setAttribute("emprunts", emprunts);
-
-        List<Reservation> reservations = gestionnaireReservations.getAllReservations();
-        request.getSession().setAttribute("reservations", reservations);
-
+        
         List<Fournisseur> fournisseurs = gestionnaireReaprovisionnement.getAllFournisseurs();
         request.getSession().setAttribute("fournisseurs", fournisseurs);
 
         List<BonDeCommande> commandes = gestionnaireReaprovisionnement.getAllCommandes();
         request.getSession().setAttribute("commandes", commandes);
 
-        List<Souhait> souhaits = gestionnaireSouhaits.getAllSouhaits();
-        request.getSession().setAttribute("souhaits", souhaits);
-        
-        List<Employee> employees = gestionnaireAdhrent.getAllEmpoyee();
-        request.getSession().setAttribute("employees", employees);
         
         
     }
@@ -85,7 +66,7 @@ public class DashboardServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
-        response.sendRedirect("admin/Dashboard.jsp");
+        response.sendRedirect("admin/StockManagement.jsp");
     }
 
 }

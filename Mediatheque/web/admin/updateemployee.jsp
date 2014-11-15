@@ -1,3 +1,5 @@
+<%@page import="fr.polytech.orm.entities.Employee"%>
+<%@page import="fr.polytech.orm.entities.Adherent"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,54 +25,59 @@
 
                 <!-- Wrapper for slides -->
   
-                
+                                <%
+                                    Employee employee = (Employee) request.getSession().getAttribute("employee");
+                                    
+                                %> 
                 
                 <div>
-                    <h1 class="page-header">Dashboard Mediatheque </h1>
+                    <h1 class="page-header"> </h1>
 
 
-                    <h2 class="sub-header">Ajout Adherent</h2>
+                    <h2 class="sub-header">Update adherent Adherent</h2>
 
-                    <form role="form" action="../AddAdherent" method="post">
+                    <form role="form" action="../UpdateEmployee" method="post">
+                        
+                        <div class="form-group">
+                            <label for="ID">ID</label>
+                            <% out.print("<input type='text' class='form-control' id='ID' value='"+employee.getId()+"' name='ID' readonly>"); %>
+                        </div>
                         <div class="form-group">
                             <label for="PRENOM">PRENOM</label>
-                            <input type="text" class="form-control" id="PRENOM" placeholder="PRENOM" name="PRENOM">
+                            <% out.print("<input type='text' class='form-control' id='PRENOM' placeholder='"+employee.getPrenom()+"' name='PRENOM'>"); %>                        
                         </div>
                         <div class="form-group">
                             <label for="NOM">NOM</label>
-                            <input type="text" class="form-control" id="NOM" placeholder="NOM" name="NOM">
+                            <% out.print("<input type='text' class='form-control' id='NOM' placeholder='"+employee.getNom()+"' name='NOM'>"); %>
+                        
                         </div>
 
                         <div class="form-group">
                             <label for="PASSWORD">PASSWORD</label>
-                            <input type="text" class="form-control" id="PASSWORD" placeholder="PASSWORD" name="PASSWORD">
+                            <% out.print("<input type='text' class='form-control' id='PASSWORD' placeholder='"+employee.getPassword()+"' name='PASSWORD'>"); %>
+                       
                         </div>
                         <div class="form-group">
                             <label for="LOGIN">LOGIN</label>
-                            <input type="text" class="form-control" id="LOGIN" placeholder="LOGIN" name="LOGIN">
+                             <% out.print("<input type='text' class='form-control' id='LOGIN' placeholder='"+employee.getLogin()+"' name='LOGIN'>"); %>
+                       
                         </div>
                         
                         <div class="form-group">
                             <label for="AGE">AGE</label>
-                            <input type="text" class="form-control" id="AGE" placeholder="AGE" name="AGE">
+                            <% out.print("<input type='text' class='form-control' id='AGE' placeholder='"+employee.getAge()+"' name='AGE'>"); %>
+                       
                         </div>
                         <div class="form-group">
                             <label for="lieu">LIEUX DE NAISSANCE</label>
-                            <input type="text" class="form-control" id="lieu" placeholder="lieu" name="lieu">
+                             <% out.print("<input type='text' class='form-control' id='lieu' placeholder='"+employee.getLieuNaissance()+"' name='lieu'>"); %>
+                       
                         </div>
-                        <div class="form-group">
-                            <label for="COMPTEID">COMPTE ID</label>
-                            <input type="text" class="form-control" id="COMPTEID" placeholder="COMPTEID" name="COMPTEID">
-                        </div>
-                        <div class="form-group">
-                            <label for="MONTANT">MONTANT</label>
-                            <input type="text" class="form-control" id="MONTANT" placeholder="MONTANT" name="MONTANT">
-                        </div>
-
+                       
                        
                         
                         
-                        <button type="submit" class="btn btn-default">add Adherent</button>
+                        <button type="submit" class="btn btn-default">update employee</button>
                     </form>
                 </div>
             </div>

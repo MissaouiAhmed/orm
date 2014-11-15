@@ -21,17 +21,13 @@
                 <%--<%@include file="../navigation/LeftBar.html" %>--%>
                 <!-- --------------------------------------------------------------- -->          
 
-                <!-- Wrapper for slides -->
-  
-                
-                
-                <div>
+                <div >
                     <h1 class="page-header">Dashboard Mediatheque </h1>
 
 
-                    <h2 class="sub-header">Ajout Adherent</h2>
+                    <h2 class="sub-header">Ajout Employee</h2>
 
-                    <form role="form" action="../AddAdherent" method="post">
+                    <form role="form" action="../AddEmployee" method="post">
                         <div class="form-group">
                             <label for="PRENOM">PRENOM</label>
                             <input type="text" class="form-control" id="PRENOM" placeholder="PRENOM" name="PRENOM">
@@ -58,19 +54,7 @@
                             <label for="lieu">LIEUX DE NAISSANCE</label>
                             <input type="text" class="form-control" id="lieu" placeholder="lieu" name="lieu">
                         </div>
-                        <div class="form-group">
-                            <label for="COMPTEID">COMPTE ID</label>
-                            <input type="text" class="form-control" id="COMPTEID" placeholder="COMPTEID" name="COMPTEID">
-                        </div>
-                        <div class="form-group">
-                            <label for="MONTANT">MONTANT</label>
-                            <input type="text" class="form-control" id="MONTANT" placeholder="MONTANT" name="MONTANT">
-                        </div>
-
-                       
-                        
-                        
-                        <button type="submit" class="btn btn-default">add Adherent</button>
+                        <button type="submit" class="btn btn-default">add Employee</button>
                     </form>
                 </div>
             </div>

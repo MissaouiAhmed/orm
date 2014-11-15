@@ -8,10 +8,17 @@ import java.util.List;
 public interface UserManagement {
 
     public void addAdhrent(Adherent adherent);
+    public void updateAdhrent(Adherent adherent);
+    public void addEmployee(Employee employee);
+    public void updateEmployee(Employee employee);
+    public Employee getEmployee(String reference);
 
-    public void addEmployee(Employee adherent);
+    public void removeEmployee(Employee employee);
+    public void removeAdherent(Adherent adherent);
 
     public List<Adherent> getAllAdherent();
+
+    public List<Employee> getAllEmpoyee();
 
     public Adherent getAdherent(String id);
 
