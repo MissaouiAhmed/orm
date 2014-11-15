@@ -21,14 +21,14 @@
     </head>
 
     <body>
-        <%@include file="../navigation/TopBar.html" %>
+        <%@include file="../navigation/adherentTopBar.html" %>
 
         <div class="container-fluid">
-            <div class="row">
-                <%@include file="../navigation/aLeftBar.html" %>
+            <div>
+                <%--<%@include file="../navigation/aLeftBar.html" %>--%>
                 <!-- --------------------------------------------------------------- -->          
 
-                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <div>
                     <h1 class="page-header"> Dashboard Adherent </h1>
 
 
@@ -40,7 +40,6 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Reference</th>
                                     <th>Titre</th>
                                     <th>Auteur</th>
                                 </tr>
@@ -49,16 +48,16 @@
 
 
                                 <%
-                                    Item item = (Item) request.getSession().getAttribute("item");
+                                    List<Item> items = (List) request.getSession().getAttribute("item");
+                                    for (Item item : items) {
                                         out.print("<tr class='info'>");
                                         out.print("<td><a href='../ReserverItem'>Reserver</a></td>");
                                         
-                                        out.print("<td>" + item.getReference() + "</td>");
                                         out.print("<td>" + item.getTitre()+ "</td>");
                                         out.print("<td>" + item.getAuteur()+ "</td>");
                                         
                                         out.print("</tr>");
-
+                                    }
                                     
                                 %>     
 

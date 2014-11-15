@@ -11,6 +11,12 @@ public interface ProductManagement {
     public List<Item> getAllItems();
 
     public Item getItem(String reference);
+    
+    public List<Item> getItemsbyAuteur(String auteur);
+    
+    public List<Item> getItemsbyTitre(String titre);
+    
+    public List<Item> getItemsbyTitreAndAuteur (String titre, String auteur);
 
     public void addExemplaire(Exemplaire exemplaire);
 

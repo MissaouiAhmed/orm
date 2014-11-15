@@ -8,6 +8,7 @@ package fr.polytech.orm.controllers;
 import fr.polytech.orm.buisness.ProductManagement;
 import fr.polytech.orm.entities.Item;
 import java.io.IOException;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,10 +30,20 @@ public class ResearchItemServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String reference = request.getParameter("Refitem");
-        Item item = gestionnaireProdcuts.getItem(reference);
-        request.getSession().setAttribute("item", item);
-        
+        String titreitem = request.getParameter("titreitem");
+        String auteuritem = request.getParameter("auteuritem");
+        if (!titreitem.isEmpty() && !auteuritem.isEmpty()){
+            List <Item> item = gestionnaireProdcuts.getItemsbyTitreAndAuteur(titreitem, auteuritem);
+            request.getSession().setAttribute("item", item);
+        } else if (!titreitem.isEmpty() && auteuritem.isEmpty()){
+            List <Item> item = gestionnaireProdcuts.getItemsbyTitre(titreitem);
+            request.getSession().setAttribute("item", item);
+        }else if (titreitem.isEmpty() && !auteuritem.isEmpty()){
+            List <Item> item = gestionnaireProdcuts.getItemsbyAuteur(auteuritem);
+            request.getSession().setAttribute("item", item);
+        } else {
+            response.sendRedirect("#");
+        }
         response.sendRedirect("adherent/AffichResultserchitem.jsp");
         
     }

@@ -65,4 +65,16 @@ public class ProductManagementImpl implements ProductManagement {
         DaoFactory.exemplaireDAO.update(exemplaire, em);
     }
 
+    public List<Item> getItemsbyAuteur(String auteur) {
+        return em.createNamedQuery("getItemsbyAuteur").setParameter("auteur", "%" + auteur + "%").getResultList();
+    }
+
+    public List<Item> getItemsbyTitre(String titre) {
+        return (List<Item>) em.createNamedQuery("getItemsbyTitre").setParameter("titre", "%" + titre + "%").getResultList();
+    }
+
+    public List<Item> getItemsbyTitreAndAuteur(String titre, String auteur) {
+        return em.createNamedQuery("getItemsbyTitreAndAuteur").setParameter("titre", "%" + titre + "%").setParameter("auteur", "%" + auteur + "%").getResultList();
+    }
+
 }

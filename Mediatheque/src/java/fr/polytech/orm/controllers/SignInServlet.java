@@ -40,7 +40,7 @@ public class SignInServlet extends HttpServlet {
                     HttpSession s;
                     s = request.getSession();
                     s.setAttribute("ad", adherent);
-                    response.sendRedirect("aDashboard");
+                    response.sendRedirect("indexAdherent");
                 } else {
                     response.sendRedirect("#");
                 }

@@ -16,21 +16,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/dashboard.css" rel="stylesheet">
+        <link href="../css/adherentcss.css" rel="stylesheet">
         <script src="../js/jquery.min.js"></script>
         <script src="../js/bootstrap.min.js"></script>
         <script src="../js/docs.min.js"></script>
     </head>
 
     <body>
-        <%@include file="../navigation/TopBar.html" %>
+        <%@include file="../navigation/adherentTopBar.html" %>
 
         <div class="container-fluid">
-            <div class="row">
-                <%@include file="../navigation/aLeftBar.html" %>
-                <!-- --------------------------------------------------------------- -->          
-
-                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header"> Dashboard Adherent </h1>
+            <div>
+                <%--<%@include file="../navigation/aLeftBar.html" %>--%>
+                <!-- --------------------------------------------------------------- -->
+                <div>
+                   <center><h2 class="page-header"> Dashboard Adherent </h2></center>
                     <%
                     Adherent ad = (Adherent) request.getSession().getAttribute("ad");
                     %>
@@ -42,9 +42,9 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Reference</th>
                                     <th>Titre</th>
                                     <th>Auteur</th>
+                                    <th>Date de disposition</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -56,10 +56,9 @@
                                         out.print("<tr class='info'>");
                                         out.print("<td></td>");
                                         
-                                        out.print("<td>" + item.getReference() + "</td>");
                                         out.print("<td>" + item.getTitre()+ "</td>");
                                         out.print("<td>" + item.getAuteur()+ "</td>");
-                                        
+                                        out.print("<td>" + item.getDateDispostion()+ "</td>");
                                         out.print("</tr>");
 
                                     }
@@ -78,7 +77,6 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>REFERENCE</th>
                                     <th>ETAT</th>
                                     <th>NOMBRE EMPRUNT</th>                                    
                                     <th>ITEM</th>                                    
@@ -93,10 +91,9 @@
                                         out.print("<tr class='danger'>");
                                         out.print("<td></td>");
                                         
-                                        out.print("<td>" + exemplaire.getReference() + "</td>");
                                         out.print("<td>" + exemplaire.getEtat()+ "</td>");
                                         out.print("<td>" + exemplaire.getNb_emprunt()+ "</td>");
-                                        out.print("<td>" + exemplaire.getItem().getReference() + "</td>");
+                                        out.print("<td>" + exemplaire.getItem().getTitre()+ "</td>");
 
                                         out.print("</tr>");
 
@@ -158,7 +155,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Numero</th>
-                                    <th>ReferenceItem</th>
+                                    <th>Item</th>
                                     <th>Quantite</th>                                    
                                     <th>Status</th>                                    
                                     
@@ -172,7 +169,7 @@
                                         out.print("<td></td>");
                                         
                                         out.print("<td>" + reservation.getNumero()+ "</td>");
-                                        out.print("<td>" + reservation.getItem().getReference()+ "</td>");
+                                        out.print("<td>" + reservation.getItem().getTitre()+ "</td>");
                                         out.print("<td>" + reservation.getQuantité()+ "</td>");
                                         out.print("<td>" + reservation.getStatus()+ "</td>");
 

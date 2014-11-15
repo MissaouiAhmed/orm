@@ -19,23 +19,24 @@
     </head>
 
     <body>
-        <%@include file="../navigation/TopBar.html" %>
+        <%@include file="../navigation/adherentTopBar.html" %>
 
 
         <div class="container-fluid">
             <div class="row">
-                <%@include file="../navigation/aLeftBar.html" %>
+                <%--<%@include file="../navigation/aLeftBar.html" %>--%>
                 <!-- --------------------------------------------------------------- -->          
 
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Dashboard Adherent </h1>
+                   <center><h1 class="page-header"> Dashboard Adherent </h1></center>
 
 
                     <h2 class="sub-header">Research Item</h2>
                     <h6>Veuillez inserer les critéres de votre recherche :</h6>
                     <form action="../ResearchItem" method="post">
                         <table>
-                            <tr><td>Reference Item : </td><td>&nbsp;&nbsp;<input type="text" id = "Refitem" name="Refitem" /></td></tr>
+                            <tr><td>Titre de l'item : </td><td>&nbsp;&nbsp;<input type="text" id = "titreitem" name="titreitem" /></td></tr>
+                            <tr><td>Auteur de l'item : </td><td>&nbsp;&nbsp;<input type="text" id = "auteuritem" name="auteuritem" /></td></tr>
                         </table>
                         <input type="submit" value="CreateRecord" />
                     </form>

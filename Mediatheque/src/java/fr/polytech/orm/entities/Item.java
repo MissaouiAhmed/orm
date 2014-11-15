@@ -30,7 +30,7 @@ import javax.persistence.Temporal;
             query = "SELECT i.exemplaires FROM Item i "
             + " WHERE i.reference = :reference"),
     @NamedQuery(
-            name = "getItembyTitre",
+            name = "getItemsbyTitre",
             query = "SELECT i FROM Item i WHERE i.titre like :titre "),
     @NamedQuery(
             name = "getItemsbyAuteur",
@@ -40,7 +40,7 @@ import javax.persistence.Temporal;
             query = "SELECT i FROM Item i WHERE i.dateEdition = :dateEdition "),
     @NamedQuery(
             name = "getItemsbytype",
-            query = "SELECT i FROM Item i WHERE i.type.id = :type "),
+            query = "SELECT i FROM Item i WHERE i.type.id like :type "),
     @NamedQuery(
             name = "getItemsbyTitreAndAuteur",
             query = "SELECT i FROM Item i  WHERE i.titre like :titre and i.auteur like :auteur "),

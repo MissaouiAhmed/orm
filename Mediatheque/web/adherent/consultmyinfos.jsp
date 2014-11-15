@@ -22,15 +22,15 @@
     </head>
 
     <body>
-        <%@include file="../navigation/TopBar.html" %>
+        <%@include file="../navigation/adherentTopBar.html" %>
 
         <div class="container-fluid">
-            <div class="row">
-                <%@include file="../navigation/aLeftBar.html" %>
+            <div>
+                <%--<%@include file="../navigation/aLeftBar.html" %>--%>
                 <!-- --------------------------------------------------------------- -->          
 
-                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header"> Dashboard Adherent </h1>
+                <div>
+                    <center><h1 class="page-header"> Dashboard Adherent </h1></center>
                     <%
                     Adherent ad = (Adherent) request.getSession().getAttribute("ad");
                     %>
