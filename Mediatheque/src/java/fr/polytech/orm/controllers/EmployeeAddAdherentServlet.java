@@ -18,7 +18,7 @@ public class EmployeeAddAdherentServlet extends AddAdherentServlet {
             throws ServletException, IOException {
 
         super.processRequest(request, response);
-        response.sendRedirect("EmployeeAdherentManagement");
+        response.sendRedirect("EmployeeUserManagement");
       
     }
 

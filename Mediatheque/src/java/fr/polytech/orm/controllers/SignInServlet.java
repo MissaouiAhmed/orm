@@ -36,7 +36,8 @@ public class SignInServlet extends HttpServlet {
         } else {
             List<Adherent> list = gestionnaireAdhrent.getAllAdherent();
             for (Adherent adherent : list) {
-                if (login.equalsIgnoreCase(adherent.getLogin()) && password.equalsIgnoreCase(adherent.getPassword())) {
+                if (login.equalsIgnoreCase(adherent.getLogin()) 
+                        && password.equalsIgnoreCase(adherent.getPassword())) {
                     HttpSession s;
                     s = request.getSession();
                     s.setAttribute("ad", adherent);
