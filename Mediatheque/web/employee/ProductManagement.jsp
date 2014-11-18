@@ -79,10 +79,10 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>ITEM</th> 
                                     <th>REFERENCE</th>
                                     <th>ETAT</th>
                                     <th>NOMBRE EMPRUNT</th>                                    
-                                    <th>ITEM</th> 
                                     
                                     <th><a href="addIExemplaire.jsp"><img src="../css/img/addP.png" height="20" width="20"/></a> </th>
                                 
@@ -96,11 +96,11 @@
                                         out.print("<tr class='danger'>");
                                         out.print("<td></td>");
                                         
+                                        out.print("<td>" + exemplaire.getItem().getReference() + "</td>");
                                         out.print("<td>" + exemplaire.getReference() + "</td>");
                                         out.print("<td>" + exemplaire.getEtat()+ "</td>");
                                         out.print("<td>" + exemplaire.getNb_emprunt()+ "</td>");
-                                        out.print("<td>" + exemplaire.getItem().getReference() + "</td>");
-
+                                        
                                         out.print("</tr>");
 
                                     }
