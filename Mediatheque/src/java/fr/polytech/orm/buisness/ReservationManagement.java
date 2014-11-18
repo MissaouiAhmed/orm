@@ -9,7 +9,7 @@ public interface ReservationManagement {
     public void addReservation(Reservation reservation);
 
     public List<Reservation> getAllReservations();
-    
+    public Reservation getReservationByItemAndAdherent(String itemReference, String adherentId);
     public Reservation getReservation(String reference);
     public void updateReservation (Reservation reservation);
     public void deleteReservation (Reservation reservation);

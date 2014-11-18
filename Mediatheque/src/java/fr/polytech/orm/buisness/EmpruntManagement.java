@@ -15,4 +15,5 @@ public interface EmpruntManagement {
 
     public void deleteEmprunt(Emprunt emprunt);
 
+    public Emprunt getEmpruntbyItemAndAdherent(String itemReference, String adherentId);
 }
