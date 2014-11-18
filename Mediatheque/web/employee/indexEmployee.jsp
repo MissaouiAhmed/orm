@@ -1,4 +1,3 @@
-<%@page import="fr.polytech.orm.entities.Employee"%>
 <%@page import="fr.polytech.orm.entities.Souhait"%>
 <%@page import="fr.polytech.orm.entities.BonDeCommande"%>
 <%@page import="fr.polytech.orm.entities.Fournisseur"%>
@@ -17,20 +16,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/dashboard.css" rel="stylesheet">
+        <link href="../css/adherentcss.css" rel="stylesheet">
         <script src="../js/jquery.min.js"></script>
         <script src="../js/bootstrap.min.js"></script>
         <script src="../js/docs.min.js"></script>
     </head>
 
-    <body>
+   <body>
         <%@include file="TopBar.html" %>
 
         <div class="container-fluid">
                <div >
                 
-                    <%
-                    Employee emp = (Employee) request.getSession().getAttribute("emp");
-                    %>    
                 <div id="carousel-example-generic" class="carousel slide "
                      data-ride="carousel" data-interval="2000" >
                     <!-- Indicators -->

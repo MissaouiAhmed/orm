@@ -1,4 +1,4 @@
-<%@page import="fr.polytech.orm.entities.Employee"%>
+<%@page import="fr.polytech.orm.entities.ReservationStatus"%>
 <%@page import="fr.polytech.orm.entities.BonDeCommande"%>
 <%@page import="fr.polytech.orm.entities.Fournisseur"%>
 <%@page import="fr.polytech.orm.entities.Reservation"%>
@@ -125,10 +125,11 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Numero</th>
-                                    <th>Adherent</th>
+                                    <th>Nom</th>
+                                    <th>Prenom</th>
+                                    <th> N°Catre</th>
                                     <th>Exemplaire</th>  
                                     <th>Date Emprunt</th> 
-                                    <th>DateEmprunt</th> 
                                     <th>StatusEmprunt</th> 
                                     <th></th><th></th>
                                      <th><a href="addEmprunt.jsp"><img src="../css/img/addP.png" height="20" width="20"/></a> </th>
@@ -139,14 +140,16 @@
                                 <%
                                     List<Emprunt> emprunts = (List) request.getSession().getAttribute("emprunts");
                                     for (Emprunt emprunt : emprunts) {
-                                        out.print("<tr class='danger'>");
+                                        out.print("<td></td>");
                                         out.print("<td>" + emprunt.getNumero() + "</td>");
-                                        out.print("<td>" + emprunt.getAdherent().getId() + "</td>");
+                                        out.print("<td>" + emprunt.getAdherent().getNom() + "</td>");
+                                        out.print("<td>" + emprunt.getAdherent().getPrenom() + "</td>");
+                                        out.print("<td>" + emprunt.getAdherent().getNumeroCarte() + "</td>");
                                         out.print("<td>" + emprunt.getExemplaire().getReference() + "</td>");
                                         out.print("<td>" + emprunt.getDateEprunt() + "</td>");
                                         out.print("<td>" + emprunt.getStatus() + "</td>");
                              out.print ("<td><a href='../EmployeeAddEmprunt?type=Validation&numero="+emprunt.getNumero()+"&selectedexemplaire="+emprunt.getExemplaire().getReference()+"'>VALIDATE</td>");
-                             out.print ("<td><a href='../EmployeeAddEmprunt?type=Annulation&numero="+emprunt.getNumero()+"&selectedexemplaire="+emprunt.getExemplaire().getReference()+"'>REMOVE</td>");
+                             out.print ("<td><a href='../EmployeeAddEmprunt?type=MAJ&numero="+emprunt.getNumero()+"&selectedexemplaire="+emprunt.getExemplaire().getReference()+"'>Update</td>");
                 
                                         out.print("</tr>");
 
@@ -158,7 +161,7 @@
                     </div>
 
                     <!-- ************************************************************************************** -->                                    
-                     <h2 class="sub-header">Liste des reservations </h2>
+                     <h2 class="sub-header">Liste des reservations en cours</h2>
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead>
@@ -167,7 +170,7 @@
                                     <th>Numero</th>
                                     <th>IdAdherent</th>
                                     <th>ReferenceItem</th>   
-                                    <th>Quantite</th> 
+                                   
                                     <th>Status</th>  
                                       <th><a href="addReservation.jsp"><img src="../css/img/addP.png" height="20" width="20"/></a> </th>
                                 </tr>
@@ -178,29 +181,63 @@
                                     List<Reservation> reservations = (List) request.getSession().
                                             getAttribute("reservations");
                                     for (Reservation reservation : reservations) {
+                                        if(!(reservation.getStatus()==ReservationStatus.TERMINE)){
                                          out.print("<td></td>");
                                         out.print("<td>" + reservation.getNumero() + "</td>");
                                         out.print("<td>" + reservation.getAdherent().getId() + "</td>");
                                         out.print("<td>" + reservation.getItem().getReference() + "</td>");
-                                        out.print("<td>" + reservation.getQuantité() + "</td>");
+                                        
                                          out.print("<td>" + reservation.getStatus() + "</td>");
                             out.print ("<td><a href='../EmployeeAddReservation?type=Validation&numero="+reservation.getNumero()+"&selecteditem="+reservation.getItem().getReference()+"'>VALIDATE</td>");
                              out.print ("<td><a href='../EmployeeAddReservation?type=Annulation&numero="+reservation.getNumero()+"'>REMOVE</td>");
                                     
                                         out.print("</tr>");
-
+                                        }
                                     }
                                 %>     
                             </tbody>
                         </table>
                     </div>
+                          
    
+   
+   
+     
+
+ <!-- ************************************************************************************** -->                                    
+                     <h2 class="sub-header">Liste des reservations terminées</h2>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Numero</th>
+                                    <th>IdAdherent</th>
+                                    <th>ReferenceItem</th>   
+                                    <th>Quantite</th> 
+                                   
+                                      <th><a href="addReservation.jsp"><img src="../css/img/addP.png" height="20" width="20"/></a> </th>
+                                </tr>
+                            </thead>
+                            <tbody>                               
+
+                                <%
+                                   
+                                    for (Reservation reservation : reservations) {
+                                if(reservation.getStatus()==ReservationStatus.TERMINE){
+                                         out.print("<td></td>");
+                                        out.print("<td>" + reservation.getNumero() + "</td>");
+                                        out.print("<td>" + reservation.getAdherent().getId() + "</td>");
+                                        out.print("<td>" + reservation.getItem().getReference() + "</td>");
+                                        out.print("<td>" + reservation.getQuantité() + "</td>");
+                                        
+                                       out.print("</tr>");
+                                       }
+                                    }
+                                %>     
                             </tbody>
                         </table>
                     </div>
-
-
-
 
                   
                 </div>

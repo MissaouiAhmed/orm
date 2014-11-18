@@ -18,11 +18,11 @@
 
         <div class="container-fluid">
             <div class="row">
-                <%@include file="LeftBar.html" %>
+              
                 <!-- --------------------------------------------------------------- -->          
 
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Dashboard Mediatheque </h1>
+                    
 
 
                     <h2 class="sub-header">Ajout Fournisseur</h2>
@@ -30,17 +30,16 @@
                     <form action="../EmployeeAddFournisseur" method="post">
                         <table>
                             <tr><td>ID:</td><td><input type="text" id = "id" name="id" /></td></tr>
-                            <tr><td>FirstName</td><td><input type="text" id = "firstName" name="firstName" /></td></tr>
-                            <tr><td>LastName</td><td><input type="text" id = "lastName" name="lastName" /></td></tr>
+                            <tr><td>NOM FOUNISSEUR</td><td><input type="text" id = "Name" name="Name" /></td></tr>
                         </table>
-                        <input type="submit" value="CreateRecord" />
+                        <input type="submit" value="AddFournisseur" />
                     </form>
 
                    
                     </div>
                 </div>
             </div>
-        </div>
+       
 
 
     </body>

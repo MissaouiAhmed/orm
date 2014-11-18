@@ -39,8 +39,9 @@ public class AddReservationServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-            String selectedItem = request.getParameter("selecteditem");
+         String selectedItem = request.getParameter("selecteditem");
          String selectedAdherent = request.getParameter("selectedadehrent");
+         
          
         String numero = request.getParameter("numero");
         String type = request.getParameter("type");
@@ -56,7 +57,7 @@ public class AddReservationServlet extends HttpServlet {
         emprunt.setExemplaire(gestionnaireProducts.getDispExemplaire(res.getItem().getExemplaires()));
         emprunt.setDateEprunt(new Date());
         emprunt.setDuree(6);
-        emprunt.setStatus(EmpruntStatus.EN_COURS);
+        emprunt.setStatus(EmpruntStatus.EN_ATTENTE);
         emprunt.setNumero(UUID.randomUUID().toString());
         gestionnaireEmprunt.addEmprunt(emprunt);
        
@@ -70,31 +71,20 @@ public class AddReservationServlet extends HttpServlet {
          
      }
      else {
-       /* Exemplaire e = new Exemplaire();
-        e.setReference(UUID.randomUUID().toString());
-        Item ad = new Item();
-        ad.setReference(UUID.randomUUID().toString());
-        e.setItem(ad);
-
-        Adherent add = new Adherent();
-        add.setId(UUID.randomUUID().toString());
-        add.setPrenom(UUID.randomUUID().toString());*/
-
+     
         Reservation res = new Reservation();
         Item item = gestionnaireProducts.getItem(selectedItem);
+        Adherent adherent = gestionnaireAdherent.getAdherent(selectedAdherent);
+        if((gestionnaireReservations.getReservationByItemAndAdherent(selectedItem, selectedAdherent)==null)&&(gestionnaireEmprunt.getEmpruntbyItemAndAdherent(selectedItem, selectedAdherent)==null)){
+        
         res.setItem(item);
- 
-         Adherent adherent = gestionnaireAdherent.getAdherent(selectedAdherent);
         res.setAdherent(adherent);
         res.setNumero(UUID.randomUUID().toString());
         res.setDateEprunt(new Date());
-       /* res.setAdherent(add);
-        res.setItem(ad);*/
-        res.setQuantité(5);
+        //res.setQuantité(quantite);
         res.setStatus(ReservationStatus.EN_ATTENTE);
-
         gestionnaireReservations.addReservation(res);
-       
+      }
     }}
 
     @Override

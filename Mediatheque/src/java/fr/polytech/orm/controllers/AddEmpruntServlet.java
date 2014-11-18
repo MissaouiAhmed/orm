@@ -52,7 +52,7 @@ public class AddEmpruntServlet extends HttpServlet {
        gestionnaireProducts.updateExemplaire(exemplaire);
         
      }
-     else if (type!=null && type.equals("Annulation")){
+     else if (type!=null && type.equals("MAJ")){
         Emprunt res = new Emprunt();
         res.setNumero(numero);
         res=gestionnaireEmprunt.getEmprunt(numero);
@@ -65,31 +65,21 @@ public class AddEmpruntServlet extends HttpServlet {
           
      }
      else {
-        /*Exemplaire e = new Exemplaire();
-        e.setReference(UUID.randomUUID().toString());
-        Item ad = new Item();
-        ad.setReference(UUID.randomUUID().toString());
-        e.setItem(ad);
-
-        Adherent add = new Adherent();
-        add.setId(UUID.randomUUID().toString());
-        add.setPrenom(UUID.randomUUID().toString());*/
          
        Emprunt em = new Emprunt();
         Exemplaire exemplaire = gestionnaireProducts.getExemplaire(selectedExemplaire);
         em.setExemplaire(exemplaire);
         
- 
-         Adherent adherent = gestionnaireAdherent.getAdherent(selectedAdherent);
-        em.setAdherent(adherent);
-        
-        em.setDateEprunt(new Date());
-        em.setDuree(6);
-        em.setNumero(UUID.randomUUID().toString());
-        em.setStatus(EmpruntStatus.EN_COURS);
-        gestionnaireEmprunt.addEmprunt(em);
+        if(gestionnaireEmprunt.getEmpruntbyItemAndAdherent(exemplaire.getItem().getReference(), selectedAdherent)==null){
+           Adherent adherent = gestionnaireAdherent.getAdherent(selectedAdherent);
+           em.setAdherent(adherent);
 
-       
+           em.setDateEprunt(new Date());
+           em.setDuree(6);
+           em.setNumero(UUID.randomUUID().toString());
+           em.setStatus(EmpruntStatus.EN_ATTENTE);
+           gestionnaireEmprunt.addEmprunt(em);
+        }
 
     }
     }

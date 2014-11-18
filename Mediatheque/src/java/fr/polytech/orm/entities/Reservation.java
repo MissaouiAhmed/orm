@@ -17,7 +17,11 @@ import javax.persistence.Table;
             query = "SELECT l FROM Reservation l WHERE l.numero = :numero "),
     @NamedQuery(
             name = "getALLReservations",
-            query = "SELECT l FROM Reservation l ")
+            query = "SELECT l FROM Reservation l "),
+    @NamedQuery(
+            name = "getReservationbyItemAndAdherent",
+            query = "SELECT r FROM Reservation r WHERE r.item.reference = :reference AND r.adherent.id=:id And r.status=fr.polytech.orm.entities.ReservationStatus.EN_ATTENTE")
+    
 })
 public class Reservation implements Serializable {
 
@@ -103,6 +107,10 @@ public class Reservation implements Serializable {
 
     public void setStatus(ReservationStatus status) {
         this.status = status;
+    }
+
+    public void setQuantité(String quantite) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

@@ -21,7 +21,7 @@
 
         <div class="container-fluid">
             <div class="row">
-                <%@include file="LeftBar.html" %>
+               
                 <!-- --------------------------------------------------------------- -->          
 
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -64,8 +64,8 @@
                                 %>     
                                 
                             </select>
-                         </div>
-                        <input type="submit" value="CreateRecord" />
+                         
+                        <input type="submit" value="ADD" />
                     </form>
 
                    

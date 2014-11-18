@@ -36,4 +36,12 @@ public class EmpruntManagementImpl implements EmpruntManagement {
         DaoFactory.empruntDAO.delete(emprunt, em);
     }
 
+    public Emprunt getEmpruntbyItemAndAdherent(String itemReference, String adherentId) {
+         List<Emprunt> emprunts= em.createNamedQuery("getEmpruntbyItemAndAdherent").setParameter("reference", itemReference).setParameter("id", adherentId).
+                getResultList();
+         if(emprunts.size() > 0){
+             return emprunts.get(0);
+         }
+         return null;
+    }
 }

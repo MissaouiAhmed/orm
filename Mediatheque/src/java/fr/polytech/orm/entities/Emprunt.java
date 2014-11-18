@@ -24,7 +24,11 @@ import javax.persistence.Table;
             query = "SELECT e.status FROM Emprunt e WHERE e.numero = :numero"),
     @NamedQuery(
             name = "getEmpruntsByStatus",
-            query = "SELECT e FROM Emprunt e WHERE e.status = :status")
+            query = "SELECT e FROM Emprunt e WHERE e.status = :status"),
+    @NamedQuery(
+             name = "getEmpruntbyItemAndAdherent",
+            query = "SELECT e FROM Emprunt e WHERE e.exemplaire.item.reference = :reference AND e.adherent.id=:id And (e.status=fr.polytech.orm.entities.EmpruntStatus.EN_COURS OR e.status=fr.polytech.orm.entities.EmpruntStatus.EN_ATTENTE) ")
+    
 })
 public class Emprunt implements Serializable {
 
