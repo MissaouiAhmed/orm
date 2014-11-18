@@ -4,6 +4,8 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -27,7 +29,8 @@ public class Souhait implements Serializable {
 
     @Id
     @Column(name = "ID")
-    private String numero;
+    @GeneratedValue(strategy=GenerationType.AUTO)
+   private String numero;
 
     @Column(name = "DESCRIPTION")
     private String description;

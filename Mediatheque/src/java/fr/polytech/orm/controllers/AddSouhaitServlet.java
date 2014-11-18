@@ -31,7 +31,6 @@ public class AddSouhaitServlet extends HttpServlet {
         String ITEM_TYPE = request.getParameter("ITEM_TYPE");
         Adherent ad = (Adherent) request.getSession().getAttribute("ad");
         Souhait s = new Souhait();
-        s.setNumero(UUID.randomUUID().toString());
         s.setDescription(description);
         s.setItemName(ITEM_NAME);
         s.setItemType(ITEM_TYPE);

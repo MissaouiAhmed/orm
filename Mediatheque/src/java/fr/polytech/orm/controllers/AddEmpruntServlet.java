@@ -76,7 +76,6 @@ public class AddEmpruntServlet extends HttpServlet {
 
            em.setDateEprunt(new Date());
            em.setDuree(6);
-           em.setNumero(UUID.randomUUID().toString());
            em.setStatus(EmpruntStatus.EN_ATTENTE);
            gestionnaireEmprunt.addEmprunt(em);
         }

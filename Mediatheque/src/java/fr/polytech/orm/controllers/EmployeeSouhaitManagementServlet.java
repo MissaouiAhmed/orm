@@ -33,19 +33,7 @@ public class EmployeeSouhaitManagementServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     
-      /*
-        
-        String description = request.getParameter("description");
-        String ITEM_NAME = request.getParameter("ITEM_NAME");
-        String ITEM_TYPE = request.getParameter("ITEM_TYPE");
-        Adherent ad = (Adherent) request.getSession().getAttribute("ad");
-        Souhait s = new Souhait();
-        s.setNumero(UUID.randomUUID().toString());
-        s.setDescription(description);
-        s.setItemName(ITEM_NAME);
-        s.setItemType(ITEM_TYPE);
-        s.setAdherent(ad);
-        gestionnaireSouhait.addSouhait(s);*/
+
         List<Souhait> souhaits = gestionnaireSouhait.getAllSouhaits();
         request.getSession().setAttribute("souhaits", souhaits);
         

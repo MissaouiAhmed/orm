@@ -167,8 +167,8 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Numero</th>
-                                    <th>IdAdherent</th>
+                                    <th>Nom</th>
+                                    <th>Prenom</th>
                                     <th>ReferenceItem</th>   
                                    
                                     <th>Status</th>  
@@ -183,8 +183,8 @@
                                     for (Reservation reservation : reservations) {
                                         if(!(reservation.getStatus()==ReservationStatus.TERMINE)){
                                          out.print("<td></td>");
-                                        out.print("<td>" + reservation.getNumero() + "</td>");
-                                        out.print("<td>" + reservation.getAdherent().getId() + "</td>");
+                                        out.print("<td>" + reservation.getAdherent().getNom() + "</td>");
+                                        out.print("<td>" + reservation.getAdherent().getPrenom() + "</td>");
                                         out.print("<td>" + reservation.getItem().getReference() + "</td>");
                                         
                                          out.print("<td>" + reservation.getStatus() + "</td>");

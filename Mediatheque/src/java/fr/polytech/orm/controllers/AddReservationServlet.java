@@ -58,7 +58,6 @@ public class AddReservationServlet extends HttpServlet {
         emprunt.setDateEprunt(new Date());
         emprunt.setDuree(6);
         emprunt.setStatus(EmpruntStatus.EN_ATTENTE);
-        emprunt.setNumero(UUID.randomUUID().toString());
         gestionnaireEmprunt.addEmprunt(emprunt);
        
      }
@@ -79,7 +78,6 @@ public class AddReservationServlet extends HttpServlet {
         
         res.setItem(item);
         res.setAdherent(adherent);
-        res.setNumero(UUID.randomUUID().toString());
         res.setDateEprunt(new Date());
         //res.setQuantité(quantite);
         res.setStatus(ReservationStatus.EN_ATTENTE);

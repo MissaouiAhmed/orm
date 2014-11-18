@@ -27,6 +27,7 @@ public class Reservation implements Serializable {
 
     @Id
     @Column(name = "NUMERO", nullable = false)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private String numero;
 
     @ManyToOne(fetch = FetchType.EAGER)

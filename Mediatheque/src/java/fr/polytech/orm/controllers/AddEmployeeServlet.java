@@ -37,7 +37,6 @@ public class AddEmployeeServlet extends HttpServlet {
 
         Employee emp=new Employee();
         emp.setAge(Integer.parseInt(age));
-        emp.setId(UUID.randomUUID().toString());
         emp.setLieuNaissance(lieu);
         emp.setLogin(login);
         emp.setNom(nom);

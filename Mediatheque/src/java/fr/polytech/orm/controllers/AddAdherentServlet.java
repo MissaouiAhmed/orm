@@ -54,7 +54,7 @@ public class AddAdherentServlet extends HttpServlet {
         compte.setDateFinValidte(date.getTime());
 
         Adherent ad = new Adherent();
-        ad.setId(UUID.randomUUID().toString());
+        //ad.setId(UUID.randomUUID().toString());
         ad.setAge(Integer.parseInt(age));
         ad.setCompte(compte);
         compte.setAdherent(ad);

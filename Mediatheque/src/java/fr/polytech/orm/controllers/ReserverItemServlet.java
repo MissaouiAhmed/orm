@@ -55,7 +55,6 @@ public class ReserverItemServlet extends HttpServlet {
 
                 Adherent adherent = gestionnaireAdherent.getAdherent(ad.getId());
                 res.setAdherent(adherent);
-                res.setNumero(UUID.randomUUID().toString());
                 res.setDateEprunt(new Date());
                 res.setQuantité(5);
                 res.setStatus(ReservationStatus.EN_ATTENTE);

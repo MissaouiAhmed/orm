@@ -34,6 +34,7 @@ public class Emprunt implements Serializable {
 
     @Id
     @Column(name = "NUMERO", nullable = false)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private String numero;
     
     @Column(name = "DATE_EMPRUNT", nullable = false)
