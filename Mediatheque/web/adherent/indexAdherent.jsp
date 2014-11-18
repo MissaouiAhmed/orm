@@ -23,7 +23,8 @@
     </head>
 
     <body>
-        <%@include file="../navigation/adherentTopBar.html" %>
+        
+        <%@include file="../navigation/adherentTopMenu.jsp" %>
 
         <div class="container-fluid">
             <div>

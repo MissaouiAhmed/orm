@@ -30,6 +30,7 @@ public class ResearchItemServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+    if (!request.getParameter("titreitem").isEmpty() || !request.getParameter("auteuritem").isEmpty()){
         String titreitem = request.getParameter("titreitem");
         String auteuritem = request.getParameter("auteuritem");
         if (!titreitem.isEmpty() && !auteuritem.isEmpty()){
@@ -45,7 +46,9 @@ public class ResearchItemServlet extends HttpServlet {
             response.sendRedirect("#");
         }
         response.sendRedirect("adherent/AffichResultserchitem.jsp");
-        
+    }else{
+            response.sendRedirect("adherent/researchItem.jsp");
+        }
     }
     
     @Override

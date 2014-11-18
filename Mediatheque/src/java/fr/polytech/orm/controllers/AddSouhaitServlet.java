@@ -36,6 +36,7 @@ public class AddSouhaitServlet extends HttpServlet {
         s.setItemName(ITEM_NAME);
         s.setItemType(ITEM_TYPE);
         s.setAdherent(ad);
+        ad.getSouhaits().add(s);
         gestionnaireSouhait.addSouhait(s);
         
         response.sendRedirect("aDashboard");

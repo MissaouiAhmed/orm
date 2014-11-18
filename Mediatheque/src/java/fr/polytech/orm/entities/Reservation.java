@@ -105,4 +105,12 @@ public class Reservation implements Serializable {
         this.status = status;
     }
 
+    @Override
+    public String toString() {
+        return "Reservation{" + "numero=" + numero + ", adherent=" + adherent +
+                ", item=" + item + ", dateEprunt=" + dateEprunt + ", status=" +
+                status + ", quantit\u00e9=" + quantité + '}';
+    }
+
+    
 }

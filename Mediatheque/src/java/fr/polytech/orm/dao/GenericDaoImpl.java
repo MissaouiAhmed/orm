@@ -31,7 +31,9 @@ public class GenericDaoImpl<T, PK extends Serializable>
 
     @Override
     public T update(T t, EntityManager e) {
-        return e.merge(t);
+        T res =e.merge(t);
+        e.flush();
+        return res;
     }
 
     @Override

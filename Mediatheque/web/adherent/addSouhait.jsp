@@ -13,7 +13,7 @@
     </head>
 
     <body>
-        <%@include file="../navigation/adherentTopBar.html" %>
+        <%@include file="../navigation/adherentTopMenu.jsp" %>
 
 
         <div class="container-fluid">
@@ -30,7 +30,7 @@
                     <form role="form" action="../AddSouhait" method="post">
                         <div class="form-group">
                             <label for="reference">DESCRIPTION</label>
-                            <textarea  type="text" class="form-control" id="description" placeholder="Saisir une Description"
+                            <textarea  type="text" rows="10" cols="50" class="form-control" id="description" placeholder="Saisir une Description"
                                        name="description"></textarea>
                         </div>
                         <div class="form-group">
