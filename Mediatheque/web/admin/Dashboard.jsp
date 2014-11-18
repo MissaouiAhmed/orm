@@ -44,7 +44,7 @@
                             </div>
                         </div>
                         <div class="item">
-                            <img src="../css/img/mediatheque.JPG" alt="..."/> 
+                            <img src="../css/img/be5.jpg" alt="..."/> 
                             <div class="carousel-caption">
                             </div>
                         </div>

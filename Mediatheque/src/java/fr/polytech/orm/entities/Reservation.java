@@ -109,6 +109,12 @@ public class Reservation implements Serializable {
     public void setStatus(ReservationStatus status) {
         this.status = status;
     }
+     @Override
+    public String toString() {
+        return "Reservation{" + "numero=" + numero + ", adherent=" + adherent +
+                ", item=" + item + ", dateEprunt=" + dateEprunt + ", status=" +
+                status + ", quantit\u00e9=" + quantité + '}';
+    }
 
     public void setQuantité(String quantite) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

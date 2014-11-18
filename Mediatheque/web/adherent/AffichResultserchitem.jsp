@@ -1,4 +1,3 @@
-<%@page import="fr.polytech.orm.entities.BonDeCommande"%>
 <%@page import="fr.polytech.orm.entities.Fournisseur"%>
 <%@page import="fr.polytech.orm.entities.Reservation"%>
 <%@page import="fr.polytech.orm.entities.Emprunt"%>
@@ -21,7 +20,7 @@
     </head>
 
     <body>
-        <%@include file="../navigation/adherentTopBar.html" %>
+        <%@include file="../navigation/adherentTopMenu.jsp" %>
 
         <div class="container-fluid">
             <div>
@@ -29,12 +28,12 @@
                 <!-- --------------------------------------------------------------- -->          
 
                 <div>
-                    <h1 class="page-header"> Dashboard Adherent </h1>
+                    <center><h2 class="page-header"> Dashboard Adherent </h2></center>
 
 
                     <!-- ************************************************************************************** -->                                    
 
-                  <h2 class="sub-header">Resultat Recherche </h2>
+                    <h2 class="sub-header">Resultat Recherche </h2>
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead>
@@ -51,23 +50,39 @@
                                     List<Item> items = (List) request.getSession().getAttribute("item");
                                     for (Item item : items) {
                                         out.print("<tr class='info'>");
-                                        out.print ("<td><a href='../ReserverItem?operation=reserver&reference="+item.getReference()+"'>RESERVER</td>");
-                                      
                                         
-                                        out.print("<td>" + item.getTitre()+ "</td>");
-                                        out.print("<td>" + item.getAuteur()+ "</td>");
                                         
+                                        
+                                        boolean dejareserve = false;
+                                        
+                                        for (Reservation reservation : ad.getReservations()){
+                                            //out.print(reservation);
+                                            dejareserve = reservation.getItem().equals(item);
+                                            break;
+                                        }
+                                        
+                                        if (dejareserve) {
+                                            out.print("<td>Already booked</td>");
+                                        } else {
+                                            out.print("<td><a href='../ReserverItem?operation=reserver&reference=" + item.getReference() + "'>RESERVER</td>");
+                                        }
+                                        
+                                        
+                                        
+                                        
+                                        out.print("<td>" + item.getTitre() + "</td>");
+                                        out.print("<td>" + item.getAuteur() + "</td>");
+
                                         out.print("</tr>");
                                     }
-                                    
                                 %>     
 
                             </tbody>
                         </table>
                     </div>
-                                           
+
                     <!-- ************************************************************************************** -->       
-                    
+
                 </div>
             </div>
         </div>

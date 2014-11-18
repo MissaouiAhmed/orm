@@ -3,7 +3,6 @@ package fr.polytech.orm.controllers;
 import fr.polytech.orm.buisness.SouhaitManagement;
 import fr.polytech.orm.entities.*;
 import java.io.IOException;
-import java.util.UUID;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,6 +34,7 @@ public class AddSouhaitServlet extends HttpServlet {
         s.setItemName(ITEM_NAME);
         s.setItemType(ITEM_TYPE);
         s.setAdherent(ad);
+        ad.getSouhaits().add(s);
         gestionnaireSouhait.addSouhait(s);
         
         response.sendRedirect("aDashboard");

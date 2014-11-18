@@ -22,7 +22,7 @@
     </head>
 
     <body>
-        <%@include file="../navigation/adherentTopBar.html" %>
+        <%@include file="../navigation/adherentTopMenu.jsp" %>
 
         <div class="container-fluid">
             <div>
@@ -31,9 +31,6 @@
 
                 <div>
                     <center><h1 class="page-header"> Dashboard Adherent </h1></center>
-                    <%
-                    Adherent ad = (Adherent) request.getSession().getAttribute("ad");
-                    %>
                     <!-- ************************************************************************************** -->                                    
                         
                     

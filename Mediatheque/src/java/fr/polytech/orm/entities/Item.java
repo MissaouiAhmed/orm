@@ -184,4 +184,52 @@ public class Item implements Serializable {
         this.dateEdition = dateEdition;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + (this.reference != null ? this.reference.hashCode() : 0);
+        hash = 29 * hash + (this.titre != null ? this.titre.hashCode() : 0);
+        hash = 29 * hash + (this.auteur != null ? this.auteur.hashCode() : 0);
+        hash = 29 * hash + (this.dateDispostion != null ? this.dateDispostion.hashCode() : 0);
+        hash = 29 * hash + (this.dateEdition != null ? this.dateEdition.hashCode() : 0);
+        hash = 29 * hash + (this.type != null ? this.type.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Item other = (Item) obj;
+        if ((this.reference == null) ? (other.reference != null) : !this.reference.equals(other.reference)) {
+            return false;
+        }
+        if ((this.titre == null) ? (other.titre != null) : !this.titre.equals(other.titre)) {
+            return false;
+        }
+        if ((this.auteur == null) ? (other.auteur != null) : !this.auteur.equals(other.auteur)) {
+            return false;
+        }
+        if (this.dateDispostion != other.dateDispostion && (this.dateDispostion == null || !this.dateDispostion.equals(other.dateDispostion))) {
+            return false;
+        }
+        if (this.dateEdition != other.dateEdition && (this.dateEdition == null || !this.dateEdition.equals(other.dateEdition))) {
+            return false;
+        }
+        if (this.type != other.type && (this.type == null || !this.type.equals(other.type))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" + "reference=" + reference + ", titre=" + titre + ", auteur=" + auteur + ", dateDispostion=" + dateDispostion + ", dateEdition=" + dateEdition + ", type=" + type + '}';
+    }
+
+    
 }

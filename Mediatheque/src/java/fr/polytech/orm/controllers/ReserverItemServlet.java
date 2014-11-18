@@ -14,7 +14,6 @@ import fr.polytech.orm.entities.Item;
 import fr.polytech.orm.entities.Reservation;
 import fr.polytech.orm.entities.ReservationStatus;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Date;
 import java.util.UUID;
 import javax.ejb.EJB;
@@ -54,12 +53,14 @@ public class ReserverItemServlet extends HttpServlet {
                 res.setItem(it);
 
                 Adherent adherent = gestionnaireAdherent.getAdherent(ad.getId());
-                res.setAdherent(adherent);
+                res.setAdherent(ad);
                 res.setDateEprunt(new Date());
                 res.setQuantité(5);
                 res.setStatus(ReservationStatus.EN_ATTENTE);
-
+                ad.getReservations().add(res);
+                it.getReservations().add(res);
                 gestionnaireReservations.addReservation(res);
+                gestionnaireAdherent.updateAdhrent(ad);
                 response.sendRedirect("aDashboard");
             }
         

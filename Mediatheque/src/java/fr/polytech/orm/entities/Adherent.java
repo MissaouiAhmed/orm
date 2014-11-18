@@ -54,7 +54,7 @@ public class Adherent extends User implements Serializable {
             fetch = FetchType.EAGER)
     private Compte compte;
 
-    @OneToMany(cascade = ALL, mappedBy = "adherent", fetch = FetchType.LAZY)
+    @OneToMany(cascade = ALL, mappedBy = "adherent", fetch = FetchType.EAGER)
     private List<Souhait> souhaits = new ArrayList<Souhait>();
 
     @OneToMany(cascade = ALL, mappedBy = "adherent", fetch = FetchType.LAZY)

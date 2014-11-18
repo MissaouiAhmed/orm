@@ -23,7 +23,7 @@
     </head>
 
     <body>
-        <%@include file="../navigation/adherentTopBar.html" %>
+        <%@include file="../navigation/adherentTopMenu.jsp" %>
 
         <div class="container-fluid">
             <div>
@@ -31,9 +31,6 @@
                 <!-- --------------------------------------------------------------- -->
                 <div>
                    <center><h2 class="page-header"> Dashboard Adherent </h2></center>
-                    <%
-                    Adherent ad = (Adherent) request.getSession().getAttribute("ad");
-                    %>
                     <!-- ************************************************************************************** -->                                    
 
                     <h2 class="sub-header">Liste des Items </h2>
@@ -54,8 +51,7 @@
                                     List<Item> items = (List) request.getSession().getAttribute("items");
                                     for (Item item : items) {
                                         out.print("<tr class='info'>");
-                                        out.print("<td></td>");
-                                        
+                                        out.print("<td></td>");   
                                         out.print("<td>" + item.getTitre()+ "</td>");
                                         out.print("<td>" + item.getAuteur()+ "</td>");
                                         out.print("<td>" + item.getDateDispostion()+ "</td>");
